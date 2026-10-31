@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">EIC 企智枢数据流图</title>
+  <desc id="desc">展示登录、聊天检索、模型流式输出和审计的主要数据流。</desc>
+  <defs><style>
+    .bg{fill:#f6f8fb}.box{fill:#fff;stroke:#b7c5d8;stroke-width:2}.title{fill:#143b70;font:700 26px sans-serif}.label{fill:#1d2a3a;font:600 16px sans-serif}.small{fill:#4d5c6d;font:13px sans-serif}.arrow{stroke:#276ea6;stroke-width:3;fill:none;marker-end:url(#m)}
+  </style><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L9 3L0 6Z" fill="#276ea6"/></marker></defs>
+  <rect width="1200" height="520" class="bg"/>
+  <text x="60" y="55" class="title">EIC 企智枢 · 聊天与知识检索数据流</text>
+  <g transform="translate(60,130)"><rect width="170" height="105" rx="14" class="box"/><text x="22" y="42" class="label">用户浏览器</text><text x="22" y="70" class="small">问题 / 文件 / Token</text></g>
+  <g transform="translate(300,130)"><rect width="170" height="105" rx="14" class="box"/><text x="22" y="42" class="label">API 鉴权</text><text x="22" y="70" class="small">租户与 RBAC 检查</text></g>
+  <g transform="translate(540,130)"><rect width="170" height="105" rx="14" class="box"/><text x="22" y="42" class="label">知识检索</text><text x="22" y="70" class="small">过滤 / 召回 / 重排</text></g>
+  <g transform="translate(780,130)"><rect width="170" height="105" rx="14" class="box"/><text x="22" y="42" class="label">模型 Provider</text><text x="22" y="70" class="small">流式响应</text></g>
+  <g transform="translate(1020,130)"><rect width="120" height="105" rx="14" class="box"/><text x="23" y="42" class="label">SSE</text><text x="23" y="70" class="small">回传</text></g>
+  <path d="M230 182H300M470 182H540M710 182H780M950 182H1020" class="arrow"/>
+  <g transform="translate(300,350)"><rect width="170" height="95" rx="14" class="box"/><text x="22" y="40" class="label">业务库</text><text x="22" y="68" class="small">消息 / 租约 / 审计</text></g>
+  <g transform="translate(540,350)"><rect width="170" height="95" rx="14" class="box"/><text x="22" y="40" class="label">向量库</text><text x="22" y="68" class="small">文档块 / Embedding</text></g>
+  <g transform="translate(780,350)"><rect width="170" height="95" rx="14" class="box"/><text x="22" y="40" class="label">Redis / ARQ</text><text x="22" y="68" class="small">索引 / 后台任务</text></g>
+  <path d="M385 235V300H385V350M625 235V350M865 235V350M625 300H385M625 300H865" class="arrow"/>
+  <text x="60" y="490" class="small">生成租约、心跳和 outbox 记录用于崩溃恢复、重复执行控制与审计追踪。</text>
+</svg>

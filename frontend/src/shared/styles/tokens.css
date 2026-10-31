@@ -1,0 +1,71 @@
+:root {
+  --eic-bg: #f5f7fa;
+  --eic-surface: #ffffff;
+  --eic-surface-soft: #eef3ff;
+  --eic-surface-muted: #f8fafc;
+  --eic-line: #e3e8ef;
+  --eic-line-strong: #7a8ba3;
+  --eic-text: #182230;
+  --eic-text-secondary: #526174;
+  --eic-text-neutral: #334155;
+  --eic-muted: #526174;
+  --eic-primary: #315ee7;
+  --eic-primary-dark: #254bc5;
+  --eic-primary-soft: #eef3ff;
+  --eic-action-fill: #315ee7;
+  --eic-action-fill-strong: #254bc5;
+  --eic-action-text: #ffffff;
+  --eic-danger-fill: #dc2626;
+  --eic-danger-fill-strong: #b91c1c;
+  --eic-user-message: #f1f5ff;
+  --eic-user-message-line: #d8e2f9;
+  --eic-cyan: #06b6d4;
+  --eic-cyan-soft: #ecfeff;
+  --eic-success: #16a34a;
+  --eic-success-text: #15803d;
+  --eic-success-soft: #f0fdf4;
+  --eic-warning: #d97706;
+  --eic-warning-text: #b45309;
+  --eic-warning-soft: #fff7e8;
+  --eic-danger: #dc2626;
+  --eic-danger-soft: #fef2f2;
+  --eic-radius-sm: 8px;
+  --eic-radius: 10px;
+  --eic-radius-lg: 16px;
+  --eic-radius-overlay: 20px;
+  --eic-space-1: 4px;
+  --eic-space-2: 8px;
+  --eic-space-3: 12px;
+  --eic-space-4: 16px;
+  --eic-space-6: 24px;
+  --eic-space-8: 32px;
+  --eic-space-12: 48px;
+  --eic-shadow: 0 4px 18px rgba(24, 34, 48, .035);
+  --eic-shadow-raised: 0 16px 40px rgba(24, 34, 48, .12);
+  --eic-font: "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+/* 全站语义状态色；布局及主色由 V4 主题覆盖。 */
+:root[data-eic-theme="dark"] {
+  --eic-bg: #111824;
+  --eic-surface: #1a2434;
+  --eic-surface-soft: #243249;
+  --eic-surface-muted: #172030;
+  --eic-line: #34445c;
+  --eic-line-strong: #8395b0;
+  --eic-text: #f0f4fc;
+  --eic-text-secondary: #bcc8dc;
+  --eic-text-neutral: #d0d9e9;
+  --eic-muted: #bcc8dc;
+  --eic-primary: #95b4ff;
+  --eic-primary-dark: #b2c8ff;
+  --eic-primary-soft: #263653;
+  --eic-user-message: #263653;
+  --eic-user-message-line: #4b6284;
+  --eic-success-text: #8fdbb4;
+  --eic-success-soft: #193b31;
+  --eic-warning-text: #ffd08d;
+  --eic-warning-soft: #403526;
+  --eic-danger: #ffb2b2;
+  --eic-danger-soft: #432b32;
+}

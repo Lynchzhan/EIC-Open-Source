@@ -1,0 +1,14 @@
+[
+  {"id":"cross-session","query":"中文","rows":[{"id":701,"content":"偏好中文回答","session_id":102,"memory_type":"preference"}],"expected":[701]},
+  {"id":"short-current","query":"中文","rows":[{"id":701,"content":"本轮中文笔记","session_id":101,"memory_type":"short_term"}],"expected":[701]},
+  {"id":"short-other","query":"中文","rows":[{"id":701,"content":"其他会话中文笔记","session_id":102,"memory_type":"session"}],"expected":[]},
+  {"id":"other-owner","query":"中文","rows":[{"id":701,"content":"中文私密信息","owner_id":12}],"expected":[]},
+  {"id":"other-tenant","query":"中文","rows":[{"id":701,"content":"中文租户秘密","tenant_id":2}],"expected":[]},
+  {"id":"other-agent","query":"中文","rows":[{"id":701,"content":"中文 Agent 秘密","agent_id":42}],"expected":[]},
+  {"id":"expired","query":"中文","rows":[{"id":701,"content":"中文过期信息","expired":true}],"expected":[]},
+  {"id":"future","query":"中文","rows":[{"id":701,"content":"未来中文偏好","future":true}],"expected":[]},
+  {"id":"archived","query":"中文","rows":[{"id":701,"content":"中文归档信息","status":"archived"}],"expected":[]},
+  {"id":"conflict","query":"中文","rows":[{"id":701,"content":"旧中文偏好","memory_key":"language","source_priority":0},{"id":702,"content":"新中文偏好","memory_key":"language","source_priority":20}],"expected":[702]},
+  {"id":"stale-match","query":"中文","rows":[{"id":701,"content":"旧中文偏好","memory_key":"language"},{"id":702,"content":"English preferred","memory_key":"language","source_priority":20}],"expected":[]},
+  {"id":"empty","query":"中文","rows":[],"expected":[]}
+]

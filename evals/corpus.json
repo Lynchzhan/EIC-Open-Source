@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "scope": "synthetic_public_fixture",
+  "documents": [
+    {"id":"refund","content":"refund returns seven days receipt policy"},
+    {"id":"delivery","content":"delivery shipping three days carrier tracking"},
+    {"id":"security","content":"security tenant isolation permissions access approval"},
+    {"id":"payroll","content":"payroll monthly salary accounting audit"},
+    {"id":"vacation","content":"vacation annual leave request manager approval"},
+    {"id":"distractor","content":"general company directory meeting room office"}
+  ]
+}

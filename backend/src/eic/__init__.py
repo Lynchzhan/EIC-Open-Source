@@ -1,0 +1,2 @@
+"""Enterprise Intelligence Center backend."""
+

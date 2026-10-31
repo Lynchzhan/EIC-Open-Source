@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="EIC 企智枢">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="16" fill="url(#tile)"/>
+  <path d="M25 28 48 17 71 28 48 41Z M25 28V43L48 55 71 43V28 M48 41V55" fill="none" stroke="#cffafe" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="25" cy="28" r="4" fill="#fff"/>
+  <circle cx="48" cy="17" r="4" fill="#fff"/>
+  <circle cx="71" cy="28" r="4" fill="#fff"/>
+  <path d="M22 66H36M22 74H33M22 82H36M22 66V82 M44 66V82 M71 68C65 63 55 67 55 74S65 85 71 80" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

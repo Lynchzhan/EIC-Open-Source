@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "scope": "deterministic_synthetic_not_real_model_quality",
+  "minCases": 60,
+  "strata": {"simple": 15, "medium": 15, "complex": 15, "long_context": 15},
+  "requiredMetrics": {
+    "taskSuccessRate": {"direction":"higher","limit":1,"minSamples":60},
+    "toolSelectionAccuracy": {"direction":"higher","limit":1,"minSamples":40},
+    "toolArgumentValidity": {"direction":"higher","limit":1,"minSamples":40},
+    "toolSuccessRate": {"direction":"higher","limit":1,"minSamples":40},
+    "crashRecoveryRate": {"direction":"higher","limit":1,"minSamples":1},
+    "duplicateSideEffectRate": {"direction":"lower","limit":0,"minSamples":5},
+    "fallbackSuccessRate": {"direction":"higher","limit":1,"minSamples":1},
+    "maxStepViolationRate": {"direction":"lower","limit":0,"minSamples":20},
+    "refusalAccuracy": {"direction":"higher","limit":1,"minSamples":5},
+    "hitAtK": {"direction":"higher","limit":1,"minSamples":10},
+    "recallAtK": {"direction":"higher","limit":1,"minSamples":10},
+    "mrr": {"direction":"higher","limit":1,"minSamples":10},
+    "ndcgAtK": {"direction":"higher","limit":1,"minSamples":10},
+    "citationPrecision": {"direction":"higher","limit":1,"minSamples":10},
+    "citationRecall": {"direction":"higher","limit":1,"minSamples":10}
+  },
+  "allowedSkips": {"test_ocr.py": 4},
+  "productionEvidenceRequired": [
+    "real_model_quality",
+    "real_database_and_dependencies",
+    "fresh_lock_build",
+    "frontend_browser_acceptance",
+    "database_backup_restore",
+    "capacity_and_budget_approval",
+    "human_release_approval"
+  ]
+}

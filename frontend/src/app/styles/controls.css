@@ -1,0 +1,19 @@
+.eic-grid-row { display:flex; flex-wrap:wrap; margin-inline:calc(var(--eic-grid-column-gap) / -2); }
+.eic-grid-col { width:calc(var(--eic-col-xs,var(--eic-col-span,24)) / 24 * 100%); padding-inline:calc(var(--eic-grid-column-gap) / 2); min-width:0; }
+@media(min-width:576px) { .eic-grid-col { width:calc(var(--eic-col-sm,var(--eic-col-xs,var(--eic-col-span,24))) / 24 * 100%); } }
+@media(min-width:768px) { .eic-grid-col { width:calc(var(--eic-col-md,var(--eic-col-sm,var(--eic-col-xs,var(--eic-col-span,24)))) / 24 * 100%); } }
+@media(min-width:992px) { .eic-grid-col { width:calc(var(--eic-col-lg,var(--eic-col-md,var(--eic-col-sm,var(--eic-col-xs,var(--eic-col-span,24))))) / 24 * 100%); } }
+@media(min-width:1200px) { .eic-grid-col { width:calc(var(--eic-col-xl,var(--eic-col-lg,var(--eic-col-md,var(--eic-col-sm,var(--eic-col-xs,var(--eic-col-span,24)))))) / 24 * 100%); } }
+@media(min-width:1600px) { .eic-grid-col { width:calc(var(--eic-col-xxl,var(--eic-col-xl,var(--eic-col-lg,var(--eic-col-md,var(--eic-col-sm,var(--eic-col-xs,var(--eic-col-span,24))))))) / 24 * 100%); } }
+@media(max-width:575px) { .eic-grid-col { width:100%; } }
+.eic-action-menu { display:flex; flex-direction:column; min-width:160px; padding:4px; }
+.eic-action-menu-item { display:flex; align-items:center; gap:8px; width:100%; border:0; background:transparent; color:var(--eic-text-secondary); text-align:left; font:inherit; padding:10px 12px; border-radius:8px; cursor:pointer; }
+.eic-action-menu-item:hover { background:var(--eic-primary-soft); color:var(--eic-primary); }
+.eic-action-menu-item.is-danger { color:var(--eic-danger); }
+.eic-action-menu-item[aria-disabled='true'] { opacity:.5; cursor:not-allowed; }
+.eic-action-menu-item svg { width:16px; height:16px; }
+.eic-list-item { display:flex; justify-content:space-between; gap:16px; padding:18px 0; border-bottom:1px solid var(--eic-line); }
+.eic-list-meta { display:flex; gap:12px; min-width:0; }.eic-list-meta p { margin:6px 0 0; color:var(--eic-muted); }
+.eic-list-actions { display:flex; gap:8px; align-items:center; }.eic-alert-action { margin-top:10px; }
+.eic-icon { display:inline-flex; width:1em; height:1em; flex-shrink:0; align-items:center; justify-content:center; line-height:1; vertical-align:-.125em; }
+.eic-icon svg { width:100%; height:100%; }

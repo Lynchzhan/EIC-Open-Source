@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>PDF 引用隔离验收</title></head>
+<body><h1>PDF 引用隔离验收（无 API / 无模型调用）</h1><div id="app"></div>
+<script type="module">
+import { createApp, h, ref } from 'vue'
+import Preview from '../src/components/ai/CitationPdfPreview.vue'
+
+// 精确计算 ASCII PDF 对象偏移，三页各自带不同可观察标记。
+function fixture() {
+  const objects = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>',
+  ]
+  for (let page = 1; page <= 3; page++) {
+    const stream = `BT /F1 20 Tf 50 700 Td (SYNTHETIC PAGE ${page} - ANCHOR-${page}37) Tj ET`
+    objects.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 600 800] /Resources << /Font << /F1 9 0 R >> >> /Contents ${page * 2 + 2} 0 R >>`)
+    objects.push(`<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`)
+  }
+  objects.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>')
+  let pdf = '%PDF-1.4\n', offsets = [0]
+  objects.forEach((object, index) => { offsets.push(pdf.length); pdf += `${index + 1} 0 obj\n${object}\nendobj\n` })
+  const xref = pdf.length
+  pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`
+  offsets.slice(1).forEach(offset => { pdf += `${String(offset).padStart(10, '0')} 00000 n \n` })
+  pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`
+  return new Blob([pdf], { type: 'application/pdf' })
+}
+createApp({ setup() {
+  const blob = ref(fixture()), pages = ref([3]), key = ref(0)
+  function select(kind) {
+    blob.value = kind === 'bad' ? new Blob(['%PDF-broken']) : fixture()
+    pages.value = kind === 'out' ? [9] : [3]; key.value++
+  }
+  return () => h('main', { style: 'max-width:900px;margin:24px auto;font:16px sans-serif' }, [
+    h('button', { onClick: () => select('valid') }, '三页样例（引用第3页）'),
+    h('button', { onClick: () => select('out') }, '超出页数样例'),
+    h('button', { onClick: () => select('bad') }, '损坏样例'),
+    h(Preview, { key: key.value, blob: blob.value, pages: pages.value }),
+  ])
+} }).mount('#app')
+</script></body></html>

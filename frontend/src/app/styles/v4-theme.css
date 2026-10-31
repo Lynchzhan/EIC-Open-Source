@@ -1,0 +1,75 @@
+/* V4 的基础令牌，向业务组件提供统一的语义变量。 */
+:root {
+  --eic-font-nav:15px; --eic-font-ui:15px; --eic-font-chat:16px;
+  --eic-font-meta:13px; --eic-font-code:14px; --eic-font-button:14px;
+  --eic-font-title:26px; --eic-font-section:19px;
+  --eic-bg: #f3f4f6;
+  --eic-surface: #fff;
+  --eic-surface-soft: #eaf0fb;
+  --eic-surface-muted: #f7f8fa;
+  --eic-line: #dce1e8;
+  --eic-line-strong: #8491a3;
+  --eic-text: #202b3a;
+  --eic-text-secondary: #526174;
+  --eic-text-neutral: #526174;
+  --eic-muted: #526174;
+  --eic-primary: #2459b8;
+  --eic-primary-dark: #19468f;
+  --eic-primary-soft: #eaf0fb;
+  --eic-action-fill: #2459b8;
+  --eic-action-fill-strong: #19468f;
+  --eic-action-text: #fff;
+  --eic-user-message: #eaf0fb;
+  --eic-user-message-line: #c9d8f2;
+  --eic-success:#19704f; --eic-success-text:#19704f; --eic-success-soft:#e8f4ed;
+  --eic-danger:#b33343; --eic-danger-soft:#fceef0;
+  --eic-radius: 12px;
+  --eic-radius-lg: 18px;
+  --eic-radius-overlay: 20px;
+  --eic-shadow: 0 6px 24px #32215c06;
+  --eic-shadow-raised: 0 16px 48px #32215c1f;
+  --eic-brand-gradient: var(--eic-action-fill);
+  --eic-background: var(--eic-bg);
+  --eic-border: var(--eic-line);
+  --eic-text-muted: var(--eic-muted);
+  --status-error: var(--eic-danger);
+  --status-error-bg: var(--eic-danger-soft);
+}
+:root[data-eic-theme='dark'] {
+  --eic-bg: #171b22;
+  --eic-surface: #202630;
+  --eic-surface-soft: #293c59;
+  --eic-surface-muted: #272f3b;
+  --eic-line: #465264;
+  --eic-line-strong: #8491a3;
+  --eic-text: #edf1f7;
+  --eic-text-secondary: #b3bfce;
+  --eic-text-neutral: #b3bfce;
+  --eic-muted: #b3bfce;
+  --eic-primary: #92baff;
+  --eic-primary-dark: #b8d1ff;
+  --eic-primary-soft: #293c59;
+  --eic-action-fill: #92baff;
+  --eic-action-fill-strong: #b8d1ff;
+  --eic-action-text: #14243c;
+  --eic-user-message: #293c59;
+  --eic-user-message-line: #465264;
+  --eic-success:#8ad9b0; --eic-success-text:#8ad9b0; --eic-success-soft:#193c2e;
+  --eic-danger:#ffabb5; --eic-danger-soft:#442831;
+  --eic-shadow: 0 6px 24px #0000001a;
+  --eic-shadow-raised: 0 16px 48px #0000004d;
+}
+html { background: var(--eic-bg); color: var(--eic-text); }
+body { margin: 0; font-family: var(--eic-font); font-size:var(--eic-font-ui); line-height:1.6; }
+*, *::before, *::after { box-sizing: border-box; }
+button, input, select, textarea { font: inherit; }
+button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--eic-primary); outline-offset: 3px; }
+button { touch-action: manipulation; }
+button:disabled { cursor: not-allowed; }
+::selection { background: var(--eic-primary-soft); color: var(--eic-primary-dark); }
+.eic-menu-trigger { display:inline-grid; place-items:center; width:32px; height:32px; border:0; border-radius:8px; cursor:pointer; background:transparent; color:var(--eic-muted); }
+.eic-menu-trigger:hover { background:var(--eic-primary-soft); color:var(--eic-primary); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

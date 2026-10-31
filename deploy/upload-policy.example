@@ -1,0 +1,10 @@
+# 不作为 env_file 自动加载。额度/保留期须单独批准；测试值不得复制到生产。
+# EIC_UPLOAD_MAX_FILE_BYTES=<approved-positive-bytes>
+# EIC_UPLOAD_MAX_REQUEST_BYTES=<approved-positive-total-file-bytes>
+# EIC_UPLOAD_MAX_BODY_BYTES=<approved-positive-http-body-bytes-including-multipart>
+# EIC_UPLOAD_MAX_FILES=<approved-positive-files-per-request>
+# EIC_UPLOAD_TENANT_MAX_BYTES=<approved-positive-retained-and-reserved-bytes>
+# EIC_UPLOAD_TENANT_MAX_FILES=<approved-positive-retained-and-reserved-files>
+# 入口 nginx 的 client_max_body_size 必须与 body 上限一起复核。
+# 未决 upload_reservations 不自动超时释放，防止活跃上传被重复分配容量。
+# python -m eic.core.upload_audit 只读盘点；无删除选项。

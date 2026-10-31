@@ -1,0 +1,49 @@
+/* 所有业务页共享版面。组件内部颜色由 Naive UI 主题管理。 */
+.management-container,.role-management-container,.user-management-container { color:var(--eic-text); min-width:0; }
+.management-card,.role-management-card,.user-management-card { border-radius:var(--eic-radius-lg); background:var(--eic-surface); box-shadow:var(--eic-shadow); }
+.card-header,.header-actions,.toolbar,.toolbar-left,.toolbar-right,.action-buttons,.card-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.card-header,.toolbar { justify-content:space-between; }
+.card-header { min-width:0; padding:4px 0; }
+.card-header > .header-actions:only-child { flex:1; justify-content:flex-end; }
+.header-title { display:flex; align-items:center; gap:10px; color:var(--eic-text); font-size:17px; font-weight:650; }
+.title-icon { color:var(--eic-primary); }
+.toolbar { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--eic-line); }
+.table-container { min-width:0; overflow:auto; }
+.action-buttons { gap:8px; }
+.search-input { width:240px; max-width:100%; }
+.cards-container { padding:8px 0; }
+.card-title { display:flex; align-items:center; justify-content:space-between; min-width:0; }
+.card-content,.model-info,.agent-info,.prompt-info { display:flex; flex-direction:column; gap:14px; min-width:0; }
+.model-card,.agent-card,.prompt-card,.knowledge-base-card { height:100%; border-radius:16px; background:var(--eic-surface); box-shadow:var(--eic-shadow); }
+.model-name,.agent-name,.prompt-name,.kb-name { font-size:16px; font-weight:650; color:var(--eic-text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.icon-element,.agent-icon { color:var(--eic-primary); font-size:32px; }
+.info-item.horizontal,.prompt-section.horizontal { display:flex; gap:12px; align-items:flex-start; }
+.info-label,.section-label { color:var(--eic-text-secondary); min-width:72px; font-size:13px; }
+.info-value,.section-content { flex:1; min-width:0; color:var(--eic-text); overflow-wrap:anywhere; font-size:13px; line-height:1.7; }
+.url-value,.slider-value { color:var(--eic-muted); font-size:12px; }
+.slider-container { display:flex; flex-direction:column; gap:8px; }
+.card-actions { justify-content:flex-end; margin-top:16px; padding-top:14px; border-top:1px solid var(--eic-line); }
+.pagination-container { display:flex; flex-wrap:wrap; justify-content:flex-end; margin-top:24px; gap:12px; overflow:auto; }
+.permissions-popover,.permission-tree { max-height:400px; overflow:auto; }
+.permission-item { display:flex; align-items:center; gap:6px; padding:6px 0; }
+.permission-icon { color:var(--eic-success); }
+.permission-node-icon { color:var(--eic-primary); margin-right:8px; }
+.eic-page-heading { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:24px; }
+.eic-page-heading h1 { font-size:26px; line-height:1.3; margin:6px 0 8px; letter-spacing:-.5px; }
+.eic-page-heading p { color:var(--eic-text-secondary); line-height:1.7; margin:0; }
+.eic-page-heading>div>span { color:var(--eic-primary); font-size:12px; }
+.list-error { margin-bottom:16px; }
+.eic-badge { display:inline-flex; align-items:center; gap:10px; }
+.eic-skeleton { padding:12px 0; }
+.header-title { font-size:var(--eic-font-section); }
+.model-name,.agent-name,.prompt-name,.kb-name { font-size:var(--eic-font-ui); }
+.info-label,.section-label,.info-value,.section-content { font-size:var(--eic-font-ui); }
+.url-value,.slider-value,.eic-page-heading>div>span { font-size:var(--eic-font-meta); }
+.eic-page-heading h1 { font-size:var(--eic-font-title); }
+@media(max-width:768px) {
+  .card-header,.toolbar,.eic-page-heading { flex-direction:column; align-items:stretch; gap:16px; }
+  .header-actions,.toolbar-left,.toolbar-right { width:100%; }
+  .header-actions>.search-input { flex:1; min-width:140px; }
+  .info-item.horizontal,.prompt-section.horizontal { flex-direction:column; gap:4px; }
+  .pagination-container { justify-content:flex-start; }
+}

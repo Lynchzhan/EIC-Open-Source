@@ -1,0 +1,142 @@
+# 唯一参考目标 v3.100.0 legacy ingestion；digest 未绑定，不可部署。
+name: lf-${RUN_ID:?RUN_ID_required}
+
+x-app: &app
+  restart: "no"
+  stop_grace_period: 120s
+  networks: [private]
+  logging:
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+
+x-env: &env
+  DATABASE_URL: postgresql://langfuse:${PG_PASSWORD:?required}@postgres:5432/langfuse
+  NEXTAUTH_URL: http://127.0.0.1:${WEB_PORT:?required}
+  SALT: ${SALT:?required}
+  ENCRYPTION_KEY: ${ENCRYPTION_KEY:?required}
+  TELEMETRY_ENABLED: "false"
+  LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES: "false"
+  CLICKHOUSE_MIGRATION_URL: clickhouse://clickhouse:9000
+  CLICKHOUSE_URL: http://clickhouse:8123
+  CLICKHOUSE_USER: langfuse
+  CLICKHOUSE_PASSWORD: ${CH_PASSWORD:?required}
+  CLICKHOUSE_DB: default
+  CLICKHOUSE_CLUSTER_ENABLED: "false"
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  REDIS_AUTH: ${REDIS_PASSWORD:?required}
+  REDIS_TLS_ENABLED: "false"
+  LANGFUSE_S3_EVENT_UPLOAD_BUCKET: ${OBJECT_BUCKET:?required}
+  LANGFUSE_S3_EVENT_UPLOAD_REGION: us-east-1
+  LANGFUSE_S3_EVENT_UPLOAD_ACCESS_KEY_ID: ${S3_ACCESS_KEY:?required}
+  LANGFUSE_S3_EVENT_UPLOAD_SECRET_ACCESS_KEY: ${S3_SECRET_KEY:?required}
+  LANGFUSE_S3_EVENT_UPLOAD_ENDPOINT: http://minio:9000
+  LANGFUSE_S3_EVENT_UPLOAD_FORCE_PATH_STYLE: "true"
+  LANGFUSE_S3_EVENT_UPLOAD_PREFIX: events/
+  LANGFUSE_S3_MEDIA_UPLOAD_BUCKET: ${OBJECT_BUCKET:?required}
+  LANGFUSE_S3_MEDIA_UPLOAD_REGION: us-east-1
+  LANGFUSE_S3_MEDIA_UPLOAD_ACCESS_KEY_ID: ${S3_ACCESS_KEY:?required}
+  LANGFUSE_S3_MEDIA_UPLOAD_SECRET_ACCESS_KEY: ${S3_SECRET_KEY:?required}
+  LANGFUSE_S3_MEDIA_UPLOAD_ENDPOINT: http://minio:9000
+  LANGFUSE_S3_MEDIA_UPLOAD_FORCE_PATH_STYLE: "true"
+  LANGFUSE_S3_MEDIA_UPLOAD_PREFIX: media/
+  LANGFUSE_S3_BATCH_EXPORT_ENABLED: "false"
+
+services:
+  langfuse-web:
+    <<: *app
+    image: docker.io/langfuse/langfuse@sha256:${WEB_SHA256:?v3_100_0_digest_required_do_not_deploy_unfilled}
+    ports: ["127.0.0.1:${WEB_PORT:?required}:3000"]
+    environment:
+      <<: *env
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:?required}
+      LANGFUSE_S3_MEDIA_UPLOAD_ENDPOINT: http://127.0.0.1:${OBJECT_PORT:?required}
+    depends_on:
+      postgres: {condition: service_healthy}
+      clickhouse: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      minio: {condition: service_healthy}
+  langfuse-worker:
+    <<: *app
+    image: docker.io/langfuse/langfuse-worker@sha256:${WORKER_SHA256:?v3_100_0_digest_required_do_not_deploy_unfilled}
+    environment: *env
+    depends_on:
+      postgres: {condition: service_healthy}
+      clickhouse: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      minio: {condition: service_healthy}
+  postgres:
+    <<: *app
+    image: docker.io/library/postgres@sha256:${PG_SHA256:?digest_required_do_not_deploy_unfilled}
+    environment:
+      POSTGRES_USER: langfuse
+      POSTGRES_DB: langfuse
+      POSTGRES_PASSWORD: ${PG_PASSWORD:?required}
+      TZ: UTC
+      PGTZ: UTC
+    volumes: ["pg:/var/lib/postgresql/data"]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U langfuse -d langfuse"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  clickhouse:
+    <<: *app
+    image: docker.io/clickhouse/clickhouse-server@sha256:${CH_SHA256:?digest_required_do_not_deploy_unfilled}
+    user: "101:101"
+    environment:
+      CLICKHOUSE_DB: default
+      CLICKHOUSE_USER: langfuse
+      CLICKHOUSE_PASSWORD: ${CH_PASSWORD:?required}
+    volumes:
+      - ch:/var/lib/clickhouse
+      - chlogs:/var/log/clickhouse-server
+    healthcheck:
+      test: [CMD, wget, --no-verbose, --tries=1, --spider, "http://localhost:8123/ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  redis:
+    <<: *app
+    image: docker.io/library/redis@sha256:${REDIS_SHA256:?digest_required_do_not_deploy_unfilled}
+    environment:
+      REDIS_AUTH: ${REDIS_PASSWORD:?required}
+    command: [redis-server, --requirepass, "${REDIS_PASSWORD:?required}", --appendonly, "yes", --appendfsync, everysec, --maxmemory-policy, noeviction]
+    volumes: ["redis:/data"]
+    healthcheck:
+      test: [CMD-SHELL, 'REDISCLI_AUTH="$$REDIS_AUTH" redis-cli ping | grep -qx PONG']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  minio:
+    <<: *app
+    image: docker.io/minio/minio@sha256:${MINIO_SHA256:?digest_required_do_not_deploy_unfilled}
+    entrypoint: [sh, -ec]
+    command: ['mkdir -p "/data/$$OBJECT_BUCKET"; exec minio server --address ":9000" --console-address ":9001" /data']
+    environment:
+      OBJECT_BUCKET: ${OBJECT_BUCKET:?required}
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY:?required}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY:?required}
+    ports: ["127.0.0.1:${OBJECT_PORT:?required}:9000"]
+    volumes: ["objects:/data"]
+    healthcheck:
+      test: [CMD, mc, ready, local]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+networks:
+  private:
+    name: lf-${RUN_ID:?required}-private
+    internal: true
+volumes:
+  pg:
+    name: lf-${RUN_ID:?required}-pg
+  ch:
+    name: lf-${RUN_ID:?required}-ch
+  chlogs:
+    name: lf-${RUN_ID:?required}-chlogs
+  redis:
+    name: lf-${RUN_ID:?required}-redis
+  objects:
+    name: lf-${RUN_ID:?required}-objects

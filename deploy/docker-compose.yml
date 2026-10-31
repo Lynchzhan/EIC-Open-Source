@@ -1,0 +1,103 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: eic
+      MYSQL_USER: eic
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD}
+    volumes: [mysql_data:/var/lib/mysql]
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: eic_vector
+      POSTGRES_USER: eic
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eic -d eic_vector"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis_data:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+  migrate:
+    build: ../backend
+    restart: "no"
+    env_file: .env
+    environment:
+      EIC_DATABASE_URL: mysql+aiomysql://eic:${MYSQL_PASSWORD}@mysql:3306/eic
+    command: ["python", "-m", "eic.core.schema", "upgrade"]
+    depends_on:
+      mysql:
+        condition: service_healthy
+  backend:
+    build: ../backend
+    env_file: .env
+    volumes: [uploads_data:/app/uploads, experience_control:/app/experience-control]
+    tmpfs:
+      - /run/eic-experience:size=32m,mode=0700
+    environment:
+      EIC_EXPERIENCE_ROOT: /app/experience-control
+      EIC_EXPERIENCE_CONTENT_ROOT: /run/eic-experience
+      EIC_DATABASE_URL: mysql+aiomysql://eic:${MYSQL_PASSWORD}@mysql:3306/eic
+      EIC_VECTOR_DATABASE_URL: postgresql+asyncpg://eic:${POSTGRES_PASSWORD}@postgres:5432/eic_vector
+      EIC_REDIS_URL: redis://redis:6379/0
+      EIC_AUTO_CREATE_SCHEMA: "false"
+      EIC_RUNTIME_SCHEMA_UPDATES: "false"
+      EIC_REQUIRE_RUNTIME_DEPENDENCIES: ${EIC_REQUIRE_RUNTIME_DEPENDENCIES:-true}
+      EIC_SEED_DEMO_DATA: ${EIC_SEED_DEMO_DATA:-true}
+    command: ["uvicorn", "eic.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      mysql:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+  worker:
+    build: ../backend
+    env_file: .env
+    volumes: [uploads_data:/app/uploads]
+    environment:
+      EIC_DATABASE_URL: mysql+aiomysql://eic:${MYSQL_PASSWORD}@mysql:3306/eic
+      EIC_VECTOR_DATABASE_URL: postgresql+asyncpg://eic:${POSTGRES_PASSWORD}@postgres:5432/eic_vector
+      EIC_REDIS_URL: redis://redis:6379/0
+      EIC_AUTO_CREATE_SCHEMA: "false"
+      EIC_RUNTIME_SCHEMA_UPDATES: "false"
+      EIC_REQUIRE_RUNTIME_DEPENDENCIES: ${EIC_REQUIRE_RUNTIME_DEPENDENCIES:-true}
+      EIC_SEED_DEMO_DATA: ${EIC_SEED_DEMO_DATA:-true}
+    command: ["arq", "eic.workers.WorkerSettings"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      backend:
+        condition: service_started
+      redis:
+        condition: service_healthy
+  frontend:
+    build: ../frontend
+    ports: ["8080:80"]
+    depends_on: [backend]
+volumes:
+  mysql_data:
+  postgres_data:
+  redis_data:
+  uploads_data:
+  experience_control:

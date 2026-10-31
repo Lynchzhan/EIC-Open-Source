@@ -1,0 +1,575 @@
+<template>
+  <div class="user-management-container">
+    <e-card class="user-management-card">
+
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <!-- 可以添加导出等工具按钮 -->
+        </div>
+        <div class="toolbar-right">
+          <e-input-search
+            v-model:value="searchKey"
+            placeholder="搜索消息..."
+            style="width: 250px; margin-right: 16px"
+            @search="onSearch"
+          />
+        </div>
+      </div>
+
+      <div class="table-container">
+        <e-tabs v-model:value="activeTab" @update:value="handleTabChange">
+          <e-tab-pane key="1" name="1" tab="系统私信">
+            <div class="tab-content">
+              <message-table 
+                message-type="private-system"
+                :data-source="privateSystemData" 
+                :loading="privateSystemLoading"
+                :pagination="privateSystemPagination"
+                @change="handlePrivateSystemTableChange"
+                @show-detail="showDetail"
+              />
+            </div>
+          </e-tab-pane>
+          
+          <e-tab-pane key="2" name="2" tab="私人私信">
+            <div class="tab-content">
+              <message-table 
+                message-type="private-user"
+                :data-source="privateUserData" 
+                :loading="privateUserLoading"
+                :pagination="privateUserPagination"
+                @change="handlePrivateUserTableChange"
+                @show-detail="showDetail"
+              />
+            </div>
+          </e-tab-pane>
+          
+          <e-tab-pane key="3" name="3" tab="公司公告">
+            <div class="tab-content">
+              <message-table 
+                message-type="announcement"
+                :data-source="announcementData" 
+                :loading="announcementLoading"
+                :pagination="announcementPagination"
+                @change="handleAnnouncementTableChange"
+                @show-detail="showDetail"
+              />
+            </div>
+          </e-tab-pane>
+          
+          <e-tab-pane key="4" name="4" tab="系统消息">
+            <div class="tab-content">
+              <message-table 
+                message-type="system"
+                :data-source="systemData" 
+                :loading="systemLoading"
+                :pagination="systemPagination"
+                @change="handleSystemTableChange"
+                @show-detail="showDetail"
+              />
+            </div>
+          </e-tab-pane>
+            <e-tab-pane key="6" name="6" tab="AI消息">
+            <div class="tab-content">
+              <message-table 
+                message-type="ai-user"
+                :data-source="aiUserData" 
+                :loading="aiUserLoading"
+                :pagination="aiUserPagination"
+                @change="handleAIUserTableChange"
+                @show-detail="showDetail"
+              />
+            </div>
+          </e-tab-pane>
+        </e-tabs>
+      </div>
+    </e-card>
+
+    <!-- 消息详情模态框 -->
+    <e-modal 
+      v-model:open="detailModalVisible" 
+      :title="detailData.title || '消息详情'" 
+      width="600px"
+      :footer="null"
+      @cancel="detailModalVisible = false"
+    >
+      <div class="message-detail">
+        <e-descriptions :column="1" bordered>
+          <e-descriptions-item label="标题">
+            {{ detailData.title }}
+          </e-descriptions-item>
+          <e-descriptions-item :label="activeTab === '3' ? '发布人' : '发送人'">
+            {{ activeTab === '3' ? detailData.createUser : detailData.sendUserName }}
+          </e-descriptions-item>
+          <e-descriptions-item label="时间">
+            {{ detailData.createdTime ? formatDate(detailData.createdTime) : '' }}
+          </e-descriptions-item>
+          <e-descriptions-item label="内容">
+            <div class="detail-content" v-html="sanitizeRichHtml(detailData.messageContent)"></div>
+          </e-descriptions-item>
+        </e-descriptions>
+      </div>
+    </e-modal>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive, onMounted } from 'vue'
+import { message } from '@/app/ui/controls'
+import { sanitizeRichHtml } from '@/utils/safeHtml.js'
+import { 
+  getPrivateUserSystemPageData,
+  getPrivateUserPageData,
+  getAnnouncementPageData,
+  getSystemPageData,
+  readMessage,
+  getAIUserPageData
+} from '@/api/message.js'
+import { MailOutlined } from '@/app/ui/icons'
+import MessageTable from '@/components/MessageTable.vue'
+
+// 当前激活的标签页
+const activeTab = ref('1')
+
+// 搜索关键词
+const searchKey = ref("")
+
+// 系统私信相关
+const privateSystemData = ref([])
+const privateSystemLoading = ref(false)
+const privateSystemPagination = reactive({
+  current: 1,
+  pageSize: 10,
+  total: 0,
+  showSizeChanger: true,
+  showQuickJumper: true,
+  showTotal: (total) => `共 ${total} 条记录`
+})
+
+// 私人私信相关
+const privateUserData = ref([])
+const privateUserLoading = ref(false)
+const privateUserPagination = reactive({
+  current: 1,
+  pageSize: 10,
+  total: 0,
+  showSizeChanger: true,
+  showQuickJumper: true,
+  showTotal: (total) => `共 ${total} 条记录`
+})
+
+// 公司公告相关
+const announcementData = ref([])
+const announcementLoading = ref(false)
+const announcementPagination = reactive({
+  current: 1,
+  pageSize: 10,
+  total: 0,
+  showSizeChanger: true,
+  showQuickJumper: true,
+  showTotal: (total) => `共 ${total} 条记录`
+})
+
+// 系统消息相关
+const systemData = ref([])
+const systemLoading = ref(false)
+const systemPagination = reactive({
+  current: 1,
+  pageSize: 10,
+  total: 0,
+  showSizeChanger: true,
+  showQuickJumper: true,
+  showTotal: (total) => `共 ${total} 条记录`
+})
+
+// AI消息相关
+const aiUserData = ref([])
+const aiUserLoading = ref(false)
+const aiUserPagination = reactive({
+  current: 1,
+  pageSize: 10,
+  total: 0,
+  showSizeChanger: true,
+  showQuickJumper: true,
+  showTotal: (total) => `共 ${total} 条记录`
+})
+
+// 获取系统私信数据
+const fetchPrivateSystemData = async () => {
+  try {
+    privateSystemLoading.value = true
+    const params = {
+      pageNum: privateSystemPagination.current,
+      pageSize: privateSystemPagination.pageSize,
+      searchKey:searchKey.value,
+      parameter: {
+        searchKey: searchKey.value
+      }
+    }
+    
+    const response = await getPrivateUserSystemPageData(params)
+    if (response.code === 200) {
+      privateSystemData.value = response.data.data
+      privateSystemPagination.total = response.data.total
+      privateSystemPagination.current = response.data.pageNum
+      privateSystemPagination.pageSize = response.data.pageSize
+    } else {
+      message.error(response.data.msg || '获取系统私信数据失败')
+    }
+  } catch (error) {
+    console.error('获取系统私信数据失败:', error)
+    message.error('获取系统私信数据失败: ' + (error.message || '未知错误'))
+  } finally {
+    privateSystemLoading.value = false
+  }
+}
+
+// 获取私人私信数据
+const fetchPrivateUserData = async () => {
+  try {
+    privateUserLoading.value = true
+    const params = {
+      pageNum: privateUserPagination.current,
+      pageSize: privateUserPagination.pageSize,
+      parameter: {
+        searchKey: searchKey.value
+      }
+    }
+    
+    const response = await getPrivateUserPageData(params)
+    if (response.code === 200) {
+      privateUserData.value = response.data.data
+      privateUserPagination.total = response.data.total
+      privateUserPagination.current = response.data.pageNum
+      privateUserPagination.pageSize = response.data.pageSize
+    } else {
+      message.error(response.data.msg || '获取私人私信数据失败')
+    }
+  } catch (error) {
+    console.error('获取私人私信数据失败:', error)
+    message.error('获取私人私信数据失败: ' + (error.message || '未知错误'))
+  } finally {
+    privateUserLoading.value = false
+  }
+}
+
+// 获取AI消息数据
+const fetchAIUserData = async () => {
+  try {
+    aiUserLoading.value = true
+    const params = {
+      pageNum: aiUserPagination.current,
+      pageSize: aiUserPagination.pageSize,
+      parameter: {
+        searchKey: searchKey.value
+      }
+    }
+    
+    const response = await getAIUserPageData(params)
+    if (response.code === 200) {
+      aiUserData.value = response.data.data
+      aiUserPagination.total = response.data.total 
+    } else {
+      message.error(response.data.msg || '获取AI消息数据失败')
+    }
+  } catch (error) {
+    console.error('获取AI消息数据失败:', error)
+    message.error('获取AI消息数据失败: ' + (error.message || '未知错误')) 
+  } finally {
+    aiUserLoading.value = false
+  }
+}
+
+// 获取公司公告数据
+const fetchAnnouncementData = async () => {
+  try {
+    announcementLoading.value = true
+    const params = {
+      pageNum: announcementPagination.current,
+      pageSize: announcementPagination.pageSize,
+      parameter: {
+        searchKey: searchKey.value
+      }
+    }
+    
+    const response = await getAnnouncementPageData(params)
+    if (response.code === 200) {
+      announcementData.value = response.data.data
+      announcementPagination.total = response.data.total
+      announcementPagination.current = response.data.pageNum
+      announcementPagination.pageSize = response.data.pageSize
+    } else {
+      message.error(response.data.msg || '获取公司公告数据失败')
+    }
+  } catch (error) {
+    console.error('获取公司公告数据失败:', error)
+    message.error('获取公司公告数据失败: ' + (error.message || '未知错误'))
+  } finally {
+    announcementLoading.value = false
+  }
+}
+
+// 获取系统消息数据
+const fetchSystemData = async () => {
+  try {
+    systemLoading.value = true
+    const params = {
+      pageNum: systemPagination.current,
+      pageSize: systemPagination.pageSize,
+      parameter: {
+        searchKey: searchKey.value
+      }
+    }
+    
+    const response = await getSystemPageData(params)
+    if (response.code === 200) {
+      systemData.value = response.data.data
+      systemPagination.total = response.data.total
+      systemPagination.current = response.data.pageNum
+      systemPagination.pageSize = response.data.pageSize
+    } else {
+      message.error(response.data.msg || '获取系统消息数据失败')
+    }
+  } catch (error) {
+    console.error('获取系统消息数据失败:', error)
+    message.error('获取系统消息数据失败: ' + (error.message || '未知错误'))
+  } finally {
+    systemLoading.value = false
+  }
+}
+
+// 处理标签页切换
+const handleTabChange = (key) => {
+  switch (key) {
+    case '1':
+      if (!privateSystemData.value || privateSystemData.value.length === 0) {
+        fetchPrivateSystemData()
+      }
+      break
+    case '2':
+      if (!privateUserData.value || privateUserData.value.length === 0) {
+        fetchPrivateUserData()
+      }
+      break
+    case '3':
+      if (!announcementData.value || announcementData.value.length === 0) {
+        fetchAnnouncementData()
+      }
+      break
+    case '4':
+      if (!systemData.value || systemData.value.length === 0) {
+        fetchSystemData()
+      }
+      break
+       case '6':
+      if (!aiUserData.value || aiUserData.value.length === 0) {
+        fetchAIUserData()
+      }
+      break
+  }
+}
+
+// 处理系统私信表格分页变化
+const handlePrivateSystemTableChange = (pager) => {
+  privateSystemPagination.current = pager.current
+  privateSystemPagination.pageSize = pager.pageSize
+  fetchPrivateSystemData()
+}
+
+// 处理私人私信表格分页变化
+const handlePrivateUserTableChange = (pager) => {
+  privateUserPagination.current = pager.current
+  privateUserPagination.pageSize = pager.pageSize
+  fetchPrivateUserData()
+}
+
+// 处理公司公告表格分页变化
+const handleAnnouncementTableChange = (pager) => {
+  announcementPagination.current = pager.current
+  announcementPagination.pageSize = pager.pageSize
+  fetchAnnouncementData()
+}
+
+// 处理系统消息表格分页变化
+const handleSystemTableChange = (pager) => {
+  systemPagination.current = pager.current
+  systemPagination.pageSize = pager.pageSize
+  fetchSystemData()
+}
+
+// 处理AI消息表格分页变化
+const handleAIUserTableChange = (pager) => {
+  aiUserPagination.current = pager.current
+  aiUserPagination.pageSize = pager.pageSize
+  fetchAIUserData()
+}
+
+// 显示详情
+const showDetail = async (record) => {
+  detailData.value = record
+  detailModalVisible.value = true
+  // 读取消息
+  try {
+    const response = await readMessage(record.id)
+    if (response.code === 200 && response.data === true) {
+      record.isRead = true
+      record.readState = 'read'
+      record.legacyReadUnattributed = false
+    }
+  } catch (error) {
+    // 请求拦截器展示错误；失败时保留原阅读状态，避免仅在前端伪造已读。
+  }
+}
+
+// 格式化日期
+const formatDate = (dateString) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return date.toLocaleString("zh-CN");
+}
+
+// 搜索处理
+const onSearch = (value) => {
+  searchKey.value = value;
+  // 根据当前激活的标签页刷新对应的数据
+  switch (activeTab.value) {
+    case '1':
+      privateSystemPagination.current = 1;
+      if (!privateSystemData.value || privateSystemData.value.length === 0) {
+        fetchPrivateSystemData();
+      } else {
+        fetchPrivateSystemData();
+      }
+      break;
+    case '2':
+      privateUserPagination.current = 1;
+      if (!privateUserData.value || privateUserData.value.length === 0) {
+        fetchPrivateUserData();
+      } else {
+        fetchPrivateUserData();
+      }
+      break;
+    case '3':
+      announcementPagination.current = 1;
+      if (!announcementData.value || announcementData.value.length === 0) {
+        fetchAnnouncementData();
+      } else {
+        fetchAnnouncementData();
+      }
+      break;
+    case '4':
+      systemPagination.current = 1;
+      if (!systemData.value || systemData.value.length === 0) {
+        fetchSystemData();
+      } else {
+        fetchSystemData();
+      }
+      break;
+    case '6':
+      aiUserPagination.current = 1;
+      if (!aiUserData.value || aiUserData.value.length === 0) {
+        fetchAIUserData();
+      } else {
+        fetchAIUserData();
+      }
+      break;
+  }
+}
+
+// // 重置搜索
+// const resetSearch = () => {
+//   searchKey.value = '';
+//   onSearch('');
+// }
+
+// 模态框相关
+const detailModalVisible = ref(false)
+const detailData = ref({})
+
+// 组件挂载时获取初始数据
+onMounted(() => {
+  fetchPrivateSystemData()
+})
+</script>
+
+<style scoped>
+
+
+
+.user-management-container {
+  color: var(--eic-text);
+  height: 100%;
+}
+
+:deep(.user-management-card) {
+  background: var(--eic-surface);
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  color: var(--eic-text);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  gap: 8px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--eic-text);
+}
+
+.title-icon {
+  margin-right: 8px;
+  color: var(--eic-primary);
+}
+
+.tab-content {
+  padding: 16px 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.unread {
+  font-weight: bold;
+}
+
+.message-detail {
+  padding: 16px 0;
+}
+
+.detail-content {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+/* Tabs：浅色底上必须用深色字 */
+</style>

@@ -1,0 +1,56 @@
+services:
+  migrate:
+    image: ${EIC_BACKEND_IMAGE:?set EIC_BACKEND_IMAGE from verified release manifest}
+    env_file: .env
+    restart: "no"
+    environment:
+      EIC_DATABASE_URL: sqlite+aiosqlite:////app/data/eic.db
+    volumes: [eic_cloud_data:/app/data]
+    command: ["python", "-m", "eic.core.schema", "upgrade"]
+  backend:
+    image: ${EIC_BACKEND_IMAGE:?set EIC_BACKEND_IMAGE from verified release manifest}
+    restart: unless-stopped
+    env_file: .env
+    mem_limit: 900m
+    environment:
+      EIC_DATABASE_URL: sqlite+aiosqlite:////app/data/eic.db
+      EIC_AUTO_CREATE_SCHEMA: "false"
+      EIC_RUNTIME_SCHEMA_UPDATES: "false"
+      EIC_BOOTSTRAP_ENABLED: "false"
+      EIC_SEED_DEMO_DATA: "false"
+      EIC_REQUIRE_RUNTIME_DEPENDENCIES: "false"
+      EIC_ENVIRONMENT: cloud-lite
+      EIC_TASK_EXECUTION_ENABLED: "false"
+      EIC_UPLOAD_ROOT: /app/uploads
+      EIC_EXPERIENCE_ROOT: /app/experience-control
+      EIC_EXPERIENCE_CONTENT_ROOT: /run/eic-experience
+    volumes:
+      - eic_cloud_data:/app/data
+      - eic_cloud_uploads:/app/uploads
+      - eic_cloud_experience:/app/experience-control
+    tmpfs:
+      - /run/eic-experience:size=32m,mode=0700
+    command: ["uvicorn", "eic.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+  frontend:
+    image: ${EIC_FRONTEND_IMAGE:?set EIC_FRONTEND_IMAGE from verified release manifest}
+    restart: unless-stopped
+    mem_limit: 64m
+    expose: ["80"]
+    depends_on: [backend]
+    command: ["nginx", "-g", "daemon off;"]
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    mem_limit: 64m
+    ports: ["${EIC_HTTP_BIND:-127.0.0.1}:${EIC_HTTP_PORT:-8080}:80"]
+    volumes:
+      - ./nginx.prod.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on: [frontend, backend]
+
+volumes:
+  eic_cloud_data:
+  eic_cloud_uploads:
+  eic_cloud_experience:

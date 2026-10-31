@@ -1,0 +1,2562 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-03T16:51:51.919992+00:00",
+  "source_release": "EIC-open-source",
+  "installation_performed": false,
+  "application_started": false,
+  "cloud_access_performed": false,
+  "runtime_prerequisites": {
+    "python": ">=3.11",
+    "node": "请按 frontend/package.json 与项目部署环境提供的 Node.js 版本执行；本次未安装或验证 Node.js",
+    "docker": "可选，仅用于容器化部署；本次未启动 Docker Compose"
+  },
+  "backend": {
+    "manifest": "backend/pyproject.toml",
+    "lockfile": "backend/uv.lock",
+    "lock_version": 1,
+    "lock_revision": 3,
+    "direct_runtime": [
+      {
+        "name": "aiomysql",
+        "declared": "aiomysql>=0.2.0",
+        "locked_version": "0.3.2"
+      },
+      {
+        "name": "aiosqlite",
+        "declared": "aiosqlite>=0.20.0",
+        "locked_version": "0.22.1"
+      },
+      {
+        "name": "alembic",
+        "declared": "alembic>=1.14.0",
+        "locked_version": "1.20.0"
+      },
+      {
+        "name": "arq",
+        "declared": "arq>=0.26.0",
+        "locked_version": "0.28.0"
+      },
+      {
+        "name": "asyncpg",
+        "declared": "asyncpg>=0.30.0",
+        "locked_version": "0.31.0"
+      },
+      {
+        "name": "cryptography",
+        "declared": "cryptography>=43.0.0",
+        "locked_version": "50.0.2"
+      },
+      {
+        "name": "fastapi",
+        "declared": "fastapi>=0.115.0",
+        "locked_version": "0.142.2"
+      },
+      {
+        "name": "httpx",
+        "declared": "httpx>=0.28.0",
+        "locked_version": "0.28.1"
+      },
+      {
+        "name": "langchain-core",
+        "declared": "langchain-core>=1.0.0,<2.0.0",
+        "locked_version": "1.6.6"
+      },
+      {
+        "name": "langgraph",
+        "declared": "langgraph>=1.0.0,<2.0.0",
+        "locked_version": "1.2.12"
+      },
+      {
+        "name": "pgvector",
+        "declared": "pgvector>=0.3.6",
+        "locked_version": "0.5.0"
+      },
+      {
+        "name": "pymupdf",
+        "declared": "pymupdf>=1.24.0",
+        "locked_version": "1.28.2"
+      },
+      {
+        "name": "pdfplumber",
+        "declared": "pdfplumber>=0.11.0",
+        "locked_version": "0.11.10"
+      },
+      {
+        "name": "python-docx",
+        "declared": "python-docx>=1.1.0",
+        "locked_version": "1.2.0"
+      },
+      {
+        "name": "openpyxl",
+        "declared": "openpyxl>=3.1.0",
+        "locked_version": "3.1.5"
+      },
+      {
+        "name": "xlrd",
+        "declared": "xlrd>=2.0.1",
+        "locked_version": "2.0.2"
+      },
+      {
+        "name": "Pillow",
+        "declared": "Pillow>=10.0.0",
+        "locked_version": "12.3.0"
+      },
+      {
+        "name": "numpy",
+        "declared": "numpy>=1.26.0",
+        "locked_version": "2.5.3"
+      },
+      {
+        "name": "rapidocr_onnxruntime",
+        "declared": "rapidocr_onnxruntime>=1.2.3,<1.3.0",
+        "locked_version": "1.2.13"
+      },
+      {
+        "name": "jieba",
+        "declared": "jieba>=0.42.1",
+        "locked_version": "0.42.1"
+      },
+      {
+        "name": "jsonschema",
+        "declared": "jsonschema>=4.23.0,<5.0.0",
+        "locked_version": "4.26.0"
+      },
+      {
+        "name": "rank-bm25",
+        "declared": "rank-bm25>=0.2.2",
+        "locked_version": "0.2.2"
+      },
+      {
+        "name": "PyJWT",
+        "declared": "PyJWT>=2.10.0",
+        "locked_version": "2.15.1"
+      },
+      {
+        "name": "python-multipart",
+        "declared": "python-multipart>=0.0.20",
+        "locked_version": "0.0.32"
+      },
+      {
+        "name": "pydantic-settings",
+        "declared": "pydantic-settings>=2.7.0",
+        "locked_version": "2.15.0"
+      },
+      {
+        "name": "qdrant-client",
+        "declared": "qdrant-client>=1.12.0",
+        "locked_version": "1.19.1"
+      },
+      {
+        "name": "PyYAML",
+        "declared": "PyYAML>=6.0.2",
+        "locked_version": "6.0.3"
+      },
+      {
+        "name": "redis",
+        "declared": "redis>=5.2.0",
+        "locked_version": "5.3.1"
+      },
+      {
+        "name": "SQLAlchemy",
+        "declared": "SQLAlchemy[asyncio]>=2.0.36,<3.0.0",
+        "locked_version": "2.1.3"
+      },
+      {
+        "name": "uvicorn",
+        "declared": "uvicorn[standard]>=0.32.0",
+        "locked_version": "0.54.0"
+      }
+    ],
+    "direct_dev": [
+      {
+        "name": "pytest",
+        "declared": "pytest>=8.3.0",
+        "locked_version": "9.1.1"
+      },
+      {
+        "name": "pytest-asyncio",
+        "declared": "pytest-asyncio>=0.24.0",
+        "locked_version": "1.4.0"
+      },
+      {
+        "name": "ruff",
+        "declared": "ruff>=0.8.0",
+        "locked_version": "0.16.10"
+      }
+    ],
+    "resolved_package_count": 111,
+    "resolved_packages": [
+      {
+        "name": "aiomysql",
+        "version": "0.3.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "aiosqlite",
+        "version": "0.22.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "alembic",
+        "version": "1.20.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "annotated-doc",
+        "version": "0.0.5",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.8.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "anyio",
+        "version": "4.15.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "arq",
+        "version": "0.28.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "async-timeout",
+        "version": "5.0.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "asyncpg",
+        "version": "0.31.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "attrs",
+        "version": "26.1.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "certifi",
+        "version": "2026.7.22",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "cffi",
+        "version": "2.1.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.5.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "click",
+        "version": "8.5.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "colorama",
+        "version": "0.4.6",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "cryptography",
+        "version": "50.0.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "distro",
+        "version": "1.9.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "enterprise-intelligence-center",
+        "version": "0.1.0",
+        "source": {
+          "editable": "."
+        }
+      },
+      {
+        "name": "et-xmlfile",
+        "version": "2.0.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "fastapi",
+        "version": "0.142.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "flatbuffers",
+        "version": "25.12.19",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "greenlet",
+        "version": "3.5.6",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "grpcio",
+        "version": "1.84.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "h2",
+        "version": "4.4.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "hiredis",
+        "version": "3.4.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "hpack",
+        "version": "4.2.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "httpcore2",
+        "version": "2.13.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "httptools",
+        "version": "0.8.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "httpx2",
+        "version": "2.13.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "httpx2-jsfetch",
+        "version": "1.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "hyperframe",
+        "version": "6.1.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "idna",
+        "version": "3.20",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "jieba",
+        "version": "0.42.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "jsonpatch",
+        "version": "1.33",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "jsonpointer",
+        "version": "3.1.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "jsonschema",
+        "version": "4.26.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "langchain-core",
+        "version": "1.6.6",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "langchain-protocol",
+        "version": "0.0.19",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "langgraph",
+        "version": "1.2.12",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "langgraph-checkpoint",
+        "version": "4.2.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "langgraph-prebuilt",
+        "version": "1.1.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "langgraph-sdk",
+        "version": "0.4.5",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "langsmith",
+        "version": "0.14.4",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "lxml",
+        "version": "6.1.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "mako",
+        "version": "1.4.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "markupsafe",
+        "version": "3.0.4",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.6",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "numpy",
+        "version": "2.5.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "onnxruntime",
+        "version": "1.30.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "opencv-python",
+        "version": "5.0.0.93",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "openpyxl",
+        "version": "3.1.5",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "opentelemetry-api",
+        "version": "1.45.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "orjson",
+        "version": "3.12.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "ormsgpack",
+        "version": "1.12.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pdfminer-six",
+        "version": "20260107",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pdfplumber",
+        "version": "0.11.10",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pgvector",
+        "version": "0.5.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pillow",
+        "version": "12.3.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pluggy",
+        "version": "1.6.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "portalocker",
+        "version": "3.2.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "protobuf",
+        "version": "7.36.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pyclipper",
+        "version": "1.4.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pycparser",
+        "version": "3.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.5",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pydantic-core",
+        "version": "2.46.5",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pydantic-settings",
+        "version": "2.15.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pygments",
+        "version": "2.21.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pyjwt",
+        "version": "2.15.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pymupdf",
+        "version": "1.28.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pymysql",
+        "version": "1.2.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pypdfium2",
+        "version": "5.13.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pytest",
+        "version": "9.1.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pytest-asyncio",
+        "version": "1.4.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "python-docx",
+        "version": "1.2.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "python-dotenv",
+        "version": "1.2.4",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "python-multipart",
+        "version": "0.0.32",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pywin32",
+        "version": "312",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "pyyaml",
+        "version": "6.0.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "qdrant-client",
+        "version": "1.19.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "rank-bm25",
+        "version": "0.2.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "rapidocr-onnxruntime",
+        "version": "1.2.13",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "redis",
+        "version": "5.3.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "requests",
+        "version": "2.34.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "requests-toolbelt",
+        "version": "1.0.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "rpds-py",
+        "version": "2026.6.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "ruff",
+        "version": "0.16.10",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "shapely",
+        "version": "2.1.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "six",
+        "version": "1.17.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "sniffio",
+        "version": "1.3.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "sqlalchemy",
+        "version": "2.1.3",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "starlette",
+        "version": "1.7.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "tenacity",
+        "version": "9.1.4",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "truststore",
+        "version": "0.10.4",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.16.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "urllib3",
+        "version": "2.8.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "uuid-utils",
+        "version": "0.17.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "uvicorn",
+        "version": "0.54.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "uvloop",
+        "version": "0.23.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "watchfiles",
+        "version": "1.3.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "websockets",
+        "version": "16.1.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "xlrd",
+        "version": "2.0.2",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "xxhash",
+        "version": "4.0.1",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      },
+      {
+        "name": "zstandard",
+        "version": "0.25.0",
+        "source": {
+          "registry": "https://pypi.org/simple"
+        }
+      }
+    ]
+  },
+  "frontend": {
+    "manifest": "frontend/package.json",
+    "lockfile": "frontend/package-lock.json",
+    "lockfile_version": 3,
+    "direct_runtime": [
+      {
+        "name": "@ant-design/icons-vue",
+        "declared": "^7.0.1",
+        "locked_version": "7.0.1",
+        "integrity": "sha512-eCqY2unfZK6Fe02AwFlDHLfoyEFreP6rBwAZMIJ1LugmfMiVgwWDYlp1YsRugaPtICYOabV1iWxXdP12u9U43Q=="
+      },
+      {
+        "name": "@codemirror/commands",
+        "declared": "^6.11.0",
+        "locked_version": "6.11.0",
+        "integrity": "sha512-/K4Rl5BN0OtTiPWmJCdqODu38XnDMsDxKY5rgrPnCkutPTJf2wVbkoixLfealF5Kwse/s8P8M5jAiURiwSwnFA=="
+      },
+      {
+        "name": "@codemirror/lang-javascript",
+        "declared": "^6.2.5",
+        "locked_version": "6.2.5",
+        "integrity": "sha512-zD4e5mS+50htS7F+TYjBPsiIFGanfVqg4HyUz6WNFikgOPf2BgKlx+TQedI1w6n/IqRBVBbBWmGFdLB/7uxO4A=="
+      },
+      {
+        "name": "@codemirror/lang-markdown",
+        "declared": "^6.5.2",
+        "locked_version": "6.5.2",
+        "integrity": "sha512-AwBOdkWYuA//WcM0xO5PfHPUcmz/O2i5o0Nsg1U69SII/loCJlFI1Romd9xp2HYb1kYJRGZotyqRghuHH5n8Kw=="
+      },
+      {
+        "name": "@codemirror/language",
+        "declared": "^6.12.4",
+        "locked_version": "6.12.4",
+        "integrity": "sha512-1q4PaT+o6PbgpkJt4Q8Fv5XJxTy4FUZ4MWETtyiDw3J0Pyr9E2vqcKL+k9wcvjNTIsauxvE7OfmWj3FRPHQ76A=="
+      },
+      {
+        "name": "@codemirror/state",
+        "declared": "^6.7.4",
+        "locked_version": "6.7.4",
+        "integrity": "sha512-QhQIVRY+xHZDxwOSFrJ1eUMapJBUID3IdeAjf7dHO7zBUzSkyooHiodnalz5MG3iHzwixKMlAAyn7244y537EA=="
+      },
+      {
+        "name": "@codemirror/theme-one-dark",
+        "declared": "^6.1.3",
+        "locked_version": "6.1.3",
+        "integrity": "sha512-NzBdIvEJmx6fjeremiGp3t/okrLPYT0d9orIc7AFun8oZcRk58aejkqhv6spnz4MLAevrKNPMQYXEWMg4s+sKA=="
+      },
+      {
+        "name": "@codemirror/view",
+        "declared": "^6.43.11",
+        "locked_version": "6.43.11",
+        "integrity": "sha512-2+esucbQX6wB2JYi1eDvdCPFTA31BN8oSy6xCmk3G6CloV11yOvEjYk+gH7kLrP0MuHG94E8WDhjs5oMiu3+Wg=="
+      },
+      {
+        "name": "ant-design-vue",
+        "declared": "^4.2.6",
+        "locked_version": "4.2.6",
+        "integrity": "sha512-t7eX13Yj3i9+i5g9lqFyYneoIb3OzTvQjq9Tts1i+eiOd3Eva/6GagxBSXM1fOCjqemIu0FYVE1ByZ/38epR3Q=="
+      },
+      {
+        "name": "axios",
+        "declared": "^1.7.9",
+        "locked_version": "1.20.0",
+        "integrity": "sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg=="
+      },
+      {
+        "name": "codemirror",
+        "declared": "^6.0.2",
+        "locked_version": "6.0.2",
+        "integrity": "sha512-VhydHotNW5w1UGK0Qj96BwSk/Zqbp9WbnyK2W/eVMv4QyF41INRGpjUhFJY7/uDNuudSc33a/PKr4iDqRduvHw=="
+      },
+      {
+        "name": "dayjs",
+        "declared": "^1.11.13",
+        "locked_version": "1.11.23",
+        "integrity": "sha512-QDTCU0M0MxR3hQfnlDJfwekQiaanm1ubOD231u73WBckQ/fsamwRLiE2GBz6D3a/xF1NgfiDLJjXBa1hYOYTtQ=="
+      },
+      {
+        "name": "file-saver",
+        "declared": "^2.0.5",
+        "locked_version": "2.0.5",
+        "integrity": "sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA=="
+      },
+      {
+        "name": "jszip",
+        "declared": "^3.10.1",
+        "locked_version": "3.10.2",
+        "integrity": "sha512-3l+rb15IOWtUhU0H5MFqES/T6Kh7abYwjosBey/vD6hDt8zoEffkSC5Ws5SGtgVw3gBx2NEbhTeSW1+kWkpyTQ=="
+      },
+      {
+        "name": "marked",
+        "declared": "^15.0.6",
+        "locked_version": "15.0.12",
+        "integrity": "sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA=="
+      },
+      {
+        "name": "resize-observer-polyfill",
+        "declared": "^1.5.1",
+        "locked_version": "1.5.1",
+        "integrity": "sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg=="
+      },
+      {
+        "name": "vue",
+        "declared": "^3.5.13",
+        "locked_version": "3.5.42",
+        "integrity": "sha512-4RyHQTbQvOPs3MfvUO1Sg0YRrKNnA0mAVtvpd12Tg1fKDN7OHBUl1IqSn8zGJjK9nI3NkNp8cgTpVrSZC5TTcA=="
+      },
+      {
+        "name": "vue-router",
+        "declared": "^4.5.0",
+        "locked_version": "4.6.4",
+        "integrity": "sha512-Hz9q5sa33Yhduglwz6g9skT8OBPii+4bFn88w6J+J4MfEo4KRRpmiNG/hHHkdbRFlLBOqxN8y8gf2Fb0MTUgVg=="
+      }
+    ],
+    "direct_dev": [
+      {
+        "name": "@vitejs/plugin-vue",
+        "declared": "^5.2.1",
+        "locked_version": "5.2.4",
+        "integrity": "sha512-7Yx/SXSOcQq5HiiV3orevHUFn+pmMB4cgbEkDYgnkUWb0WfeQ/wa2yFv6D5ICiCQOVpjA7vYDXrC7AGO8yjDHA=="
+      },
+      {
+        "name": "vite",
+        "declared": "^6.0.5",
+        "locked_version": "6.4.3",
+        "integrity": "sha512-NTKlcQjlAK7MlQoyb6LgaqHc8sso/pVyUJYWMws3jg21uTJw/LddqIFPcPqP6PzpgbIcZyKI85sFE4HBrQDA8A=="
+      }
+    ],
+    "resolved_package_count": 182,
+    "resolved_packages": [
+      {
+        "path": "node_modules/@ant-design/colors",
+        "name": "@ant-design/colors",
+        "version": "6.0.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-qAZRvPzfdWHtfameEGP2Qvuf838NhergR35o+EuVyB5XvSA98xod5r4utvi4TJ3ywmevm290g9nsCG5MryrdWQ=="
+      },
+      {
+        "path": "node_modules/@ant-design/colors/node_modules/@ctrl/tinycolor",
+        "name": "@ant-design/colors/node_modules/@ctrl/tinycolor",
+        "version": "3.6.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA=="
+      },
+      {
+        "path": "node_modules/@ant-design/icons-svg",
+        "name": "@ant-design/icons-svg",
+        "version": "4.6.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-PRomU725ABMf/lnQp5HiB7my1kjEbFY0D10N4lXYxK6TIB1gKjIVD5MRThpDaezLgw1D774J8eOeeDB0M6wHrQ=="
+      },
+      {
+        "path": "node_modules/@ant-design/icons-vue",
+        "name": "@ant-design/icons-vue",
+        "version": "7.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-eCqY2unfZK6Fe02AwFlDHLfoyEFreP6rBwAZMIJ1LugmfMiVgwWDYlp1YsRugaPtICYOabV1iWxXdP12u9U43Q=="
+      },
+      {
+        "path": "node_modules/@babel/helper-string-parser",
+        "name": "@babel/helper-string-parser",
+        "version": "7.29.7",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Pb5ijPrZ89GDH8223L4UP8i6QApWxs04RbPQJTeWDV0/keR2E36MeKnyr6LYmUUvqRRI+Iv87SuF1W6ErINzYw=="
+      },
+      {
+        "path": "node_modules/@babel/helper-validator-identifier",
+        "name": "@babel/helper-validator-identifier",
+        "version": "7.29.7",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg=="
+      },
+      {
+        "path": "node_modules/@babel/parser",
+        "name": "@babel/parser",
+        "version": "7.29.8",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-E8lTAYNB1KW+FH+VGJuZM1ioAx2E6oVlvQFRrf5P8ZZmsiJXYAD9vTFV7yyEURNzgh1dFqMZuO6tUwcARbqFCA=="
+      },
+      {
+        "path": "node_modules/@babel/runtime",
+        "name": "@babel/runtime",
+        "version": "7.29.7",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw=="
+      },
+      {
+        "path": "node_modules/@babel/types",
+        "name": "@babel/types",
+        "version": "7.29.8",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg=="
+      },
+      {
+        "path": "node_modules/@codemirror/autocomplete",
+        "name": "@codemirror/autocomplete",
+        "version": "6.20.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-tlosUqb+3BbxCxZdu4tKeRghPFC+QM7q4X5YhKV2eCmPG+1r2F3f4AaSz5sCrFqUtX4Jh20VFTKecl16MgiV9g=="
+      },
+      {
+        "path": "node_modules/@codemirror/commands",
+        "name": "@codemirror/commands",
+        "version": "6.11.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-/K4Rl5BN0OtTiPWmJCdqODu38XnDMsDxKY5rgrPnCkutPTJf2wVbkoixLfealF5Kwse/s8P8M5jAiURiwSwnFA=="
+      },
+      {
+        "path": "node_modules/@codemirror/lang-css",
+        "name": "@codemirror/lang-css",
+        "version": "6.3.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-kr5fwBGiGtmz6l0LSJIbno9QrifNMUusivHbnA1H6Dmqy4HZFte3UAICix1VuKo0lMPKQr2rqB+0BkKi/S3Ejg=="
+      },
+      {
+        "path": "node_modules/@codemirror/lang-html",
+        "name": "@codemirror/lang-html",
+        "version": "6.4.12",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-pw2ReWKUqSkbvh76RAT4NYxiogRu+PWkR2ukAwO9uOgrm8uipkzjtKKtNpyeAQwHOqxEeSvAXZ6vr3AfyB9y/w=="
+      },
+      {
+        "path": "node_modules/@codemirror/lang-javascript",
+        "name": "@codemirror/lang-javascript",
+        "version": "6.2.5",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-zD4e5mS+50htS7F+TYjBPsiIFGanfVqg4HyUz6WNFikgOPf2BgKlx+TQedI1w6n/IqRBVBbBWmGFdLB/7uxO4A=="
+      },
+      {
+        "path": "node_modules/@codemirror/lang-markdown",
+        "name": "@codemirror/lang-markdown",
+        "version": "6.5.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-AwBOdkWYuA//WcM0xO5PfHPUcmz/O2i5o0Nsg1U69SII/loCJlFI1Romd9xp2HYb1kYJRGZotyqRghuHH5n8Kw=="
+      },
+      {
+        "path": "node_modules/@codemirror/language",
+        "name": "@codemirror/language",
+        "version": "6.12.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-1q4PaT+o6PbgpkJt4Q8Fv5XJxTy4FUZ4MWETtyiDw3J0Pyr9E2vqcKL+k9wcvjNTIsauxvE7OfmWj3FRPHQ76A=="
+      },
+      {
+        "path": "node_modules/@codemirror/lint",
+        "name": "@codemirror/lint",
+        "version": "6.9.7",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-28/+iWLYxKxsvGYhSYL7zaCZqLz5+FFFDq9tVsvGv9kv8RY4fFAchJ5WX9M3YrrRlTIsECjsXPqeNgnSmNP2dg=="
+      },
+      {
+        "path": "node_modules/@codemirror/search",
+        "name": "@codemirror/search",
+        "version": "6.7.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-gUYkYhT2+n/+VGZ+8EzE5WFkYZUZYm1VOKDudIsNqh42uRVQJ0a6Yss9sdKT3MeOYfuL1N6AZA57oza0Oyr0LA=="
+      },
+      {
+        "path": "node_modules/@codemirror/state",
+        "name": "@codemirror/state",
+        "version": "6.7.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-QhQIVRY+xHZDxwOSFrJ1eUMapJBUID3IdeAjf7dHO7zBUzSkyooHiodnalz5MG3iHzwixKMlAAyn7244y537EA=="
+      },
+      {
+        "path": "node_modules/@codemirror/theme-one-dark",
+        "name": "@codemirror/theme-one-dark",
+        "version": "6.1.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-NzBdIvEJmx6fjeremiGp3t/okrLPYT0d9orIc7AFun8oZcRk58aejkqhv6spnz4MLAevrKNPMQYXEWMg4s+sKA=="
+      },
+      {
+        "path": "node_modules/@codemirror/view",
+        "name": "@codemirror/view",
+        "version": "6.43.11",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-2+esucbQX6wB2JYi1eDvdCPFTA31BN8oSy6xCmk3G6CloV11yOvEjYk+gH7kLrP0MuHG94E8WDhjs5oMiu3+Wg=="
+      },
+      {
+        "path": "node_modules/@emotion/hash",
+        "name": "@emotion/hash",
+        "version": "0.9.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-MyqliTZGuOm3+5ZRSaaBGP3USLw6+EGykkwZns2EPC5g8jJ4z9OrdZY9apkl3+UP9+sdz76YYkwCKP5gh8iY3g=="
+      },
+      {
+        "path": "node_modules/@emotion/unitless",
+        "name": "@emotion/unitless",
+        "version": "0.8.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ=="
+      },
+      {
+        "path": "node_modules/@esbuild/aix-ppc64",
+        "name": "@esbuild/aix-ppc64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-Hhmwd6CInZ3dwpuGTF8fJG6yoWmsToE+vYgD4nytZVxcu1ulHpUQRAB1UJ8+N1Am3Mz4+xOByoQoSZf4D+CpkA=="
+      },
+      {
+        "path": "node_modules/@esbuild/android-arm",
+        "name": "@esbuild/android-arm",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-VJ+sKvNA/GE7Ccacc9Cha7bpS8nyzVv0jdVgwNDaR4gDMC/2TTRc33Ip8qrNYUcpkOHUT5OZ0bUcNNVZQ9RLlg=="
+      },
+      {
+        "path": "node_modules/@esbuild/android-arm64",
+        "name": "@esbuild/android-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-6AAmLG7zwD1Z159jCKPvAxZd4y/VTO0VkprYy+3N2FtJ8+BQWFXU+OxARIwA46c5tdD9SsKGZ/1ocqBS/gAKHg=="
+      },
+      {
+        "path": "node_modules/@esbuild/android-x64",
+        "name": "@esbuild/android-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-5jbb+2hhDHx5phYR2By8GTWEzn6I9UqR11Kwf22iKbNpYrsmRB18aX/9ivc5cabcUiAT/wM+YIZ6SG9QO6a8kg=="
+      },
+      {
+        "path": "node_modules/@esbuild/darwin-arm64",
+        "name": "@esbuild/darwin-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-N3zl+lxHCifgIlcMUP5016ESkeQjLj/959RxxNYIthIg+CQHInujFuXeWbWMgnTo4cp5XVHqFPmpyu9J65C1Yg=="
+      },
+      {
+        "path": "node_modules/@esbuild/darwin-x64",
+        "name": "@esbuild/darwin-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-HQ9ka4Kx21qHXwtlTUVbKJOAnmG1ipXhdWTmNXiPzPfWKpXqASVcWdnf2bnL73wgjNrFXAa3yYvBSd9pzfEIpA=="
+      },
+      {
+        "path": "node_modules/@esbuild/freebsd-arm64",
+        "name": "@esbuild/freebsd-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-gA0Bx759+7Jve03K1S0vkOu5Lg/85dou3EseOGUes8flVOGxbhDDh/iZaoek11Y8mtyKPGF3vP8XhnkDEAmzeg=="
+      },
+      {
+        "path": "node_modules/@esbuild/freebsd-x64",
+        "name": "@esbuild/freebsd-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-TGbO26Yw2xsHzxtbVFGEXBFH0FRAP7gtcPE7P5yP7wGy7cXK2oO7RyOhL5NLiqTlBh47XhmIUXuGciXEqYFfBQ=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-arm",
+        "name": "@esbuild/linux-arm",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-lPDGyC1JPDou8kGcywY0YILzWlhhnRjdof3UlcoqYmS9El818LLfJJc3PXXgZHrHCAKs/Z2SeZtDJr5MrkxtOw=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-arm64",
+        "name": "@esbuild/linux-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-8bwX7a8FghIgrupcxb4aUmYDLp8pX06rGh5HqDT7bB+8Rdells6mHvrFHHW2JAOPZUbnjUpKTLg6ECyzvas2AQ=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-ia32",
+        "name": "@esbuild/linux-ia32",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-0y9KrdVnbMM2/vG8KfU0byhUN+EFCny9+8g202gYqSSVMonbsCfLjUO+rCci7pM0WBEtz+oK/PIwHkzxkyharA=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-loong64",
+        "name": "@esbuild/linux-loong64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-h///Lr5a9rib/v1GGqXVGzjL4TMvVTv+s1DPoxQdz7l/AYv6LDSxdIwzxkrPW438oUXiDtwM10o9PmwS/6Z0Ng=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-mips64el",
+        "name": "@esbuild/linux-mips64el",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-iyRrM1Pzy9GFMDLsXn1iHUm18nhKnNMWscjmp4+hpafcZjrr2WbT//d20xaGljXDBYHqRcl8HnxbX6uaA/eGVw=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-ppc64",
+        "name": "@esbuild/linux-ppc64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-9meM/lRXxMi5PSUqEXRCtVjEZBGwB7P/D4yT8UG/mwIdze2aV4Vo6U5gD3+RsoHXKkHCfSxZKzmDssVlRj1QQA=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-riscv64",
+        "name": "@esbuild/linux-riscv64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-Zr7KR4hgKUpWAwb1f3o5ygT04MzqVrGEGXGLnj15YQDJErYu/BGg+wmFlIDOdJp0PmB0lLvxFIOXZgFRrdjR0w=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-s390x",
+        "name": "@esbuild/linux-s390x",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-MsKncOcgTNvdtiISc/jZs/Zf8d0cl/t3gYWX8J9ubBnVOwlk65UIEEvgBORTiljloIWnBzLs4qhzPkJcitIzIg=="
+      },
+      {
+        "path": "node_modules/@esbuild/linux-x64",
+        "name": "@esbuild/linux-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-uqZMTLr/zR/ed4jIGnwSLkaHmPjOjJvnm6TVVitAa08SLS9Z0VM8wIRx7gWbJB5/J54YuIMInDquWyYvQLZkgw=="
+      },
+      {
+        "path": "node_modules/@esbuild/netbsd-arm64",
+        "name": "@esbuild/netbsd-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-xXwcTq4GhRM7J9A8Gv5boanHhRa/Q9KLVmcyXHCTaM4wKfIpWkdXiMog/KsnxzJ0A1+nD+zoecuzqPmCRyBGjg=="
+      },
+      {
+        "path": "node_modules/@esbuild/netbsd-x64",
+        "name": "@esbuild/netbsd-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-Ld5pTlzPy3YwGec4OuHh1aCVCRvOXdH8DgRjfDy/oumVovmuSzWfnSJg+VtakB9Cm0gxNO9BzWkj6mtO1FMXkQ=="
+      },
+      {
+        "path": "node_modules/@esbuild/openbsd-arm64",
+        "name": "@esbuild/openbsd-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-fF96T6KsBo/pkQI950FARU9apGNTSlZGsv1jZBAlcLL1MLjLNIWPBkj5NlSz8aAzYKg+eNqknrUJ24QBybeR5A=="
+      },
+      {
+        "path": "node_modules/@esbuild/openbsd-x64",
+        "name": "@esbuild/openbsd-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-MZyXUkZHjQxUvzK7rN8DJ3SRmrVrke8ZyRusHlP+kuwqTcfWLyqMOE3sScPPyeIXN/mDJIfGXvcMqCgYKekoQw=="
+      },
+      {
+        "path": "node_modules/@esbuild/openharmony-arm64",
+        "name": "@esbuild/openharmony-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-rm0YWsqUSRrjncSXGA7Zv78Nbnw4XL6/dzr20cyrQf7ZmRcsovpcRBdhD43Nuk3y7XIoW2OxMVvwuRvk9XdASg=="
+      },
+      {
+        "path": "node_modules/@esbuild/sunos-x64",
+        "name": "@esbuild/sunos-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-3wGSCDyuTHQUzt0nV7bocDy72r2lI33QL3gkDNGkod22EsYl04sMf0qLb8luNKTOmgF/eDEDP5BFNwoBKH441w=="
+      },
+      {
+        "path": "node_modules/@esbuild/win32-arm64",
+        "name": "@esbuild/win32-arm64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-rMmLrur64A7+DKlnSuwqUdRKyd3UE7oPJZmnljqEptesKM8wx9J8gx5u0+9Pq0fQQW8vqeKebwNXdfOyP+8Bsg=="
+      },
+      {
+        "path": "node_modules/@esbuild/win32-ia32",
+        "name": "@esbuild/win32-ia32",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-HkqnmmBoCbCwxUKKNPBixiWDGCpQGVsrQfJoVGYLPT41XWF8lHuE5N6WhVia2n4o5QK5M4tYr21827fNhi4byQ=="
+      },
+      {
+        "path": "node_modules/@esbuild/win32-x64",
+        "name": "@esbuild/win32-x64",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-alJC0uCZpTFrSL0CCDjcgleBXPnCrEAhTBILpeAp7M/OFgoqtAetfBzX0xM00MUsVVPpVjlPuMbREqnZCXaTnA=="
+      },
+      {
+        "path": "node_modules/@jridgewell/sourcemap-codec",
+        "name": "@jridgewell/sourcemap-codec",
+        "version": "1.6.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw=="
+      },
+      {
+        "path": "node_modules/@lezer/common",
+        "name": "@lezer/common",
+        "version": "1.5.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-sxQE460fPZyU3sdc8lafxiPwJHBzZRy/udNFynGQky1SePYBdhkBl1kOagA9uT3pxR8K09bOrmTUqA9wb/PjSQ=="
+      },
+      {
+        "path": "node_modules/@lezer/css",
+        "name": "@lezer/css",
+        "version": "1.3.6",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-YJE78Wcg+zX8f10hiHWQ4Az48Qr/c13eId0VtRQYLBpxHDmDeSrXIlkbl+fJGW42rWC/uoUco9mhBZeVWP/A1g=="
+      },
+      {
+        "path": "node_modules/@lezer/highlight",
+        "name": "@lezer/highlight",
+        "version": "1.2.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-qXdH7UqTvGfdVBINrgKhDsVTJTxactNNxLk7+UMwZhU13lMHaOBlJe9Vqp907ya56Y3+ed2tlqzys7jDkTmW0g=="
+      },
+      {
+        "path": "node_modules/@lezer/html",
+        "name": "@lezer/html",
+        "version": "1.3.13",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-oI7n6NJml729m7pjm9lvLvmXbdoMoi2f+1pwSDJkl9d68zGr7a9Btz8NdHTGQZtW2DA25ybeuv/SyDb9D5tseg=="
+      },
+      {
+        "path": "node_modules/@lezer/javascript",
+        "name": "@lezer/javascript",
+        "version": "1.5.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-vvYx3MhWqeZtGPwDStM2dwgljd5smolYD2lR2UyFcHfxbBQebqx8yjmFmxtJ/E6nN6u1D9srOiVWm3Rb4tmcUA=="
+      },
+      {
+        "path": "node_modules/@lezer/lr",
+        "name": "@lezer/lr",
+        "version": "1.4.10",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-rnCpTIBafOx4mRp43xOxDJbFipJm/c0cia/V5TiGlhmMa+wsSdoGmUN3w5Bqrks/09Q/D4tNAmWaT8p6NRi77A=="
+      },
+      {
+        "path": "node_modules/@lezer/markdown",
+        "name": "@lezer/markdown",
+        "version": "1.7.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-iTkYvoVcKt3WkeL7qUDyXHONZEwLio4wj8KTNi2dnjQEXBZKMV63BpQrPqfsM+OkvuRbiSTAcycYAsQzLhRNoQ=="
+      },
+      {
+        "path": "node_modules/@marijn/find-cluster-break",
+        "name": "@marijn/find-cluster-break",
+        "version": "1.0.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Wy0V7+SGUjnF9/TkiM1hKVDPj7jKXduPNboMVtHTA8dySMURWqfg/JZ9E2Sq8JgSJmkl7k7Qe9FLeMSrSraWmQ=="
+      },
+      {
+        "path": "node_modules/@napi-rs/lzma-linux-x64-gnu",
+        "name": "@napi-rs/lzma-linux-x64-gnu",
+        "version": "1.5.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-android-arm-eabi",
+        "name": "@rollup/rollup-android-arm-eabi",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-UZ8sUxPTiHWYX9QNdJedb1kDZSpS1t/VPWBWGSgqHNi9w3Cu6IXvu2mzbhiTiPvtrqgTQJ+zqiAq2iPIPilpaQ=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-android-arm64",
+        "name": "@rollup/rollup-android-arm64",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-cQ4nFQABN5cDvDpbvJ7bMStCpnaVxynZrRMfUJYgxcIk9Sh54FIO1vtfkg0B69REjER77ioZ/ov+eAApx/KmLQ=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-darwin-arm64",
+        "name": "@rollup/rollup-darwin-arm64",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-FQNqd1lRy/0QhDk3xeRIkSBiCpXCiDnZO3YLVdcDKN1UBiKToNftCzcXYNLshmPDUMlu2TdeS8tGcsU6f3YF1Q=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-darwin-x64",
+        "name": "@rollup/rollup-darwin-x64",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-pvD16V939D3CloK0+qikpGaxiPrDUXTe7Y5cWOMkMSy7m1cawa8EGy/kXYi/G/cKAC4HDAbSnzCIk1WmsoOKXg=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-freebsd-arm64",
+        "name": "@rollup/rollup-freebsd-arm64",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-pcFGeL2345VwdTnJhA6zLbew+YgWB0qBG2+dMtXjCicf6+rm6kO6cOoh5VnTe0ZMrMRgRyuHmCJxZWrIdzYuOw=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-freebsd-x64",
+        "name": "@rollup/rollup-freebsd-x64",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-mRJlqSRulVzcKq/LKA6ICSIc3K/l4fzlVn/gePn2nXIHy8seRi5z/eeRE0d/XMBxcMldiXtQTSpRj0tkkC3g8Q=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-arm-gnueabihf",
+        "name": "@rollup/rollup-linux-arm-gnueabihf",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-YDUNvVM85TI3g/1OpnqKP1h4NeW/j64DfWMf+G3M809xNk1bJSnpFp4sh83NpmVE5DXnkh8ULor4LTVZKoYLHw=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-arm-musleabihf",
+        "name": "@rollup/rollup-linux-arm-musleabihf",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-7Mcn71p9ZuQFAj+h+dhQXy/yeLePRS2yKRnmW1DijA9thKO5qap0GNOIQK4yQ6iP3SU0Mrb/yWo8h8vgRba8lw=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-arm64-gnu",
+        "name": "@rollup/rollup-linux-arm64-gnu",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-4YiLQTX6U4CSl0L9cluep9A9W6UmTfqBDc2/CH6wlu54pl4E7Jn3cOD8oxzvBDEGk/JMKgJ47C8g+radF7mwvg=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-arm64-musl",
+        "name": "@rollup/rollup-linux-arm64-musl",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-2ra8F7w8OquwZN9z2/fKFnli69wa8PLwaVzRMIPGb13ByMJwC28Fbp8YcVGoUhlYMTt7j5j9bNgpysrN2UM+vw=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-loong64-gnu",
+        "name": "@rollup/rollup-linux-loong64-gnu",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-Sy20ncyhjmBP0Ml+UvQbimjlk6VFgjW5uNP+qqwHB00mTE8Bl2C1TuHTlRwK2YoXeZbee5lP2XevBWVkAQAtSQ=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-loong64-musl",
+        "name": "@rollup/rollup-linux-loong64-musl",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-noITLp8oNjYliPnGWmLyelIHwULGqbHloQHGw1rtxbWhTuWooRpnZarZQJ1y9EUC4szuCusCc+HEpUtxpIwYvA=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-ppc64-gnu",
+        "name": "@rollup/rollup-linux-ppc64-gnu",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-hlxxXd+F1mWiAcaFR7Sv9ZQT6m6UfI8+Vy/kFJzztq2pDMU/0wZ9sish0iszNZvsQDo8Gc0i5yuFEOz5dDf6fA=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-ppc64-musl",
+        "name": "@rollup/rollup-linux-ppc64-musl",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-EF7OpqQTQ/BvGqLzUi4rEHuagCV9MugAUXSHemwPW5vxZ75RR+jxO/2j95Ph2dalMpFHSVECjRoioHZgA9zOYA=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-riscv64-gnu",
+        "name": "@rollup/rollup-linux-riscv64-gnu",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-wQO3JesW9PRkwlabQ27y7sPfVOOTLRG73I4F2UYHG5PXun3J9U3y+b7ezVKSYbsvSKGQ1k1cq8Qlun4C9kLt3w=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-riscv64-musl",
+        "name": "@rollup/rollup-linux-riscv64-musl",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-ouAGwhO6wHRXdnOVCOsB0tRFkA7nhNB2Nwax6oECXN0YiN8EYUTBAOudADOB1PI+yDL61TeNx/u7MVCzksNbkQ=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-s390x-gnu",
+        "name": "@rollup/rollup-linux-s390x-gnu",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-q2R38Sn+1J8RxhfJ+T54wSWmyKXWec+9jgDfqO2AtArEqHO5R2aeayp5H5OYLr5UYDVGsVaZPEFUooMhYCdz5A=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-x64-gnu",
+        "name": "@rollup/rollup-linux-x64-gnu",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-gfI5T24WLLuFfSKw7Go/zDXjAAV0fny0swTaDv+WjK7vqcw4cRhFfdsyKL1n+ukI+ooBxn3bVQnyrn06WpI50w=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-linux-x64-musl",
+        "name": "@rollup/rollup-linux-x64-musl",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-4h6XqthmB4Hspji84wvgk+ElodTsGj+dbZqHJHHtKxj4mYq0ANSEEPX9ys3moJueqsRjwpaJYH7874Itwnj2ow=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-openbsd-x64",
+        "name": "@rollup/rollup-openbsd-x64",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-dlfCOa87o1VAYegLQ9EKilx2JCeRofiyPGhTCmqnuXZ6bMPiycO1rq1+sKoulAp7pGLIsTIw+1x5R+zgh5LhhA=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-openharmony-arm64",
+        "name": "@rollup/rollup-openharmony-arm64",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-cjkLbOlfcm3QGhMM1J5zaZjsw1GggbN6rw9UTSSRrPrR1KkcXnN7Uq9rPw34xImQ9VOY9GN+6u2Zj80B9ptkcw=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-win32-arm64-msvc",
+        "name": "@rollup/rollup-win32-arm64-msvc",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-Li1KdUnWGE4N3e1F/B4RTB1ms+nG4WBgjByO46pkeBVX/2UBsY53xf5vK9WygVmnH3RwncIST7lkSdLSY6P9lg=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-win32-ia32-msvc",
+        "name": "@rollup/rollup-win32-ia32-msvc",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-t4ZYOSoLTgwhuFMrmTMLx/+i1DQVK7HYqMc6kY46EApwi8X0nIVphzdNoThU3xt6n+N5urG1/gxBdCaKDLavfg=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-win32-x64-gnu",
+        "name": "@rollup/rollup-win32-x64-gnu",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-RgroPfMmKlD1RzSDxvwgcPiy2HNQKoYV7OmwIXDsk73uKW5t6B/V8KIy27SMv/FNXFo/oSBtWc9J0X7t91ezZg=="
+      },
+      {
+        "path": "node_modules/@rollup/rollup-win32-x64-msvc",
+        "name": "@rollup/rollup-win32-x64-msvc",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-at8QVep6S3h5Y6gSbdGU06bRY5WJkf6WUduM9YtvYMbYhB1MOFfUgc6kehitQXzOtMSaT70q7f9ydPhpqu821w=="
+      },
+      {
+        "path": "node_modules/@simonwep/pickr",
+        "name": "@simonwep/pickr",
+        "version": "1.8.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-/l5w8BIkrpP6n1xsetx9MWPWlU6OblN5YgZZphxan0Tq4BByTCETL6lyIeY8lagalS2Nbt4F2W034KHLIiunKA=="
+      },
+      {
+        "path": "node_modules/@types/estree",
+        "name": "@types/estree",
+        "version": "1.0.9",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg=="
+      },
+      {
+        "path": "node_modules/@vitejs/plugin-vue",
+        "name": "@vitejs/plugin-vue",
+        "version": "5.2.4",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-7Yx/SXSOcQq5HiiV3orevHUFn+pmMB4cgbEkDYgnkUWb0WfeQ/wa2yFv6D5ICiCQOVpjA7vYDXrC7AGO8yjDHA=="
+      },
+      {
+        "path": "node_modules/@vue/compiler-core",
+        "name": "@vue/compiler-core",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-2Ye1ilMtKXxl8qZUrQ5j0CdgenFp/HFQmta6rfRyfEsTG69L6Wk+tWuNoHYHMx9E8tF2Slvdg1FuwDvAXdy1LQ=="
+      },
+      {
+        "path": "node_modules/@vue/compiler-dom",
+        "name": "@vue/compiler-dom",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-qbhQZEFmycr+ni/qyuccS4sucNN7VAbDfbkvNxWOX2VfgFm90MNs3/UhRNKoPMEIVn0F8gdlYjLPvqxHwHeQOA=="
+      },
+      {
+        "path": "node_modules/@vue/compiler-sfc",
+        "name": "@vue/compiler-sfc",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-fkCAFB4okcAANGMThboWnScp/gzWjU0ZSkVnjTIiplmMDq2uq0tIB3j+xVu4rhv5rvOgBySCysudmbMd6xRRqw=="
+      },
+      {
+        "path": "node_modules/@vue/compiler-ssr",
+        "name": "@vue/compiler-ssr",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-xmLk3wLkbizPAiLyomjgFFosf2ys9b5Ghb+oh/k2tnvipNz8OFrQOiTcWCzyK7MpBp9KkyGtfvgfLUivbmuGYA=="
+      },
+      {
+        "path": "node_modules/@vue/devtools-api",
+        "name": "@vue/devtools-api",
+        "version": "6.6.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g=="
+      },
+      {
+        "path": "node_modules/@vue/reactivity",
+        "name": "@vue/reactivity",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-TzNNfKpb7hDxbQltwAut8VDQA5YP+BuRlxntHUuRjyKwlMvmAPbs3unhCvieijifY6vFfVBwsS7wG/C7uq+bEQ=="
+      },
+      {
+        "path": "node_modules/@vue/runtime-core",
+        "name": "@vue/runtime-core",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-9uACtuHs7vJGkm5Bp3xu4xRDLFTIYy5DgxpToVjqGIAhAEKwQfsaLvKINhM6nFVp6bZPRFGdDqd1g52MqKsotA=="
+      },
+      {
+        "path": "node_modules/@vue/runtime-dom",
+        "name": "@vue/runtime-dom",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-rsCmhiWLaRxGltLwhlCWyYkFn7WAbKRh0q17eZ1A6Dq6eqc2ACQ61IIryxz0LrsvCzHSilLA9JHovVwM8CNE2g=="
+      },
+      {
+        "path": "node_modules/@vue/server-renderer",
+        "name": "@vue/server-renderer",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-2++5dUyYS4gvo7xQXSECUDhB7TS0aOl5SeVfC5qSq1Jgfhjvegw1zqhwTIR3imZ+QYPJQw9gfcFvXGAjGZ7ajQ=="
+      },
+      {
+        "path": "node_modules/@vue/shared",
+        "name": "@vue/shared",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-2rPxex1jQf4jvl9MOHl6YaXCPcrNqz/FstMOEh3QWY+/OME9nQTvl9WYeCwhW7AFjaR0SnngZGlp/wkR6rkI6g=="
+      },
+      {
+        "path": "node_modules/agent-base",
+        "name": "agent-base",
+        "version": "6.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ=="
+      },
+      {
+        "path": "node_modules/ant-design-vue",
+        "name": "ant-design-vue",
+        "version": "4.2.6",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-t7eX13Yj3i9+i5g9lqFyYneoIb3OzTvQjq9Tts1i+eiOd3Eva/6GagxBSXM1fOCjqemIu0FYVE1ByZ/38epR3Q=="
+      },
+      {
+        "path": "node_modules/ant-design-vue/node_modules/@ctrl/tinycolor",
+        "name": "ant-design-vue/node_modules/@ctrl/tinycolor",
+        "version": "3.6.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA=="
+      },
+      {
+        "path": "node_modules/array-tree-filter",
+        "name": "array-tree-filter",
+        "version": "2.1.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-4ROwICNlNw/Hqa9v+rk5h22KjmzB1JGTMVKP2AKJBOCgb0yL0ASf0+YvCcLNNwquOHNX48jkeZIJ3a+oOQqKcw=="
+      },
+      {
+        "path": "node_modules/async-validator",
+        "name": "async-validator",
+        "version": "4.2.5",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg=="
+      },
+      {
+        "path": "node_modules/asynckit",
+        "name": "asynckit",
+        "version": "0.4.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+      },
+      {
+        "path": "node_modules/axios",
+        "name": "axios",
+        "version": "1.20.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg=="
+      },
+      {
+        "path": "node_modules/call-bind-apply-helpers",
+        "name": "call-bind-apply-helpers",
+        "version": "1.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ=="
+      },
+      {
+        "path": "node_modules/codemirror",
+        "name": "codemirror",
+        "version": "6.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-VhydHotNW5w1UGK0Qj96BwSk/Zqbp9WbnyK2W/eVMv4QyF41INRGpjUhFJY7/uDNuudSc33a/PKr4iDqRduvHw=="
+      },
+      {
+        "path": "node_modules/combined-stream",
+        "name": "combined-stream",
+        "version": "1.0.8",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg=="
+      },
+      {
+        "path": "node_modules/compute-scroll-into-view",
+        "name": "compute-scroll-into-view",
+        "version": "1.0.20",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-UCB0ioiyj8CRjtrvaceBLqqhZCVP+1B8+NWQhmdsm0VXOJtobBCf1dBQmebCCo34qZmUwZfIH2MZLqNHazrfjg=="
+      },
+      {
+        "path": "node_modules/core-js",
+        "name": "core-js",
+        "version": "3.50.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-BRWgOLKkFeCgRudR6zrs8p9XJZcE14grzKMMssoYrk6krtuEZ7MTKPIY5RzOnqsEKIR9kst7wNzphttraT+Yqw=="
+      },
+      {
+        "path": "node_modules/core-util-is",
+        "name": "core-util-is",
+        "version": "1.0.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ=="
+      },
+      {
+        "path": "node_modules/crelt",
+        "name": "crelt",
+        "version": "1.0.7",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-aK6BbWfhf4U/wCcLHKPJl/xa6VkVstRaPywWtMKGwuOLc/wZTyQYuoxgvZnNsBvv7Kg3YTBQYYBCggcviQczuA=="
+      },
+      {
+        "path": "node_modules/csstype",
+        "name": "csstype",
+        "version": "3.2.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ=="
+      },
+      {
+        "path": "node_modules/dayjs",
+        "name": "dayjs",
+        "version": "1.11.23",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-QDTCU0M0MxR3hQfnlDJfwekQiaanm1ubOD231u73WBckQ/fsamwRLiE2GBz6D3a/xF1NgfiDLJjXBa1hYOYTtQ=="
+      },
+      {
+        "path": "node_modules/debug",
+        "name": "debug",
+        "version": "4.4.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA=="
+      },
+      {
+        "path": "node_modules/delayed-stream",
+        "name": "delayed-stream",
+        "version": "1.0.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
+      },
+      {
+        "path": "node_modules/dom-align",
+        "name": "dom-align",
+        "version": "1.12.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-R8LUSEay/68zE5c8/3BDxiTEvgb4xZTF0RKmAHfiEVN3klfIpXfi2/QCoiWPccVQ0J/ZGdz9OjzL4uJEP/MRAw=="
+      },
+      {
+        "path": "node_modules/dom-scroll-into-view",
+        "name": "dom-scroll-into-view",
+        "version": "2.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-bvVTQe1lfaUr1oFzZX80ce9KLDlZ3iU+XGNE/bz9HnGdklTieqsbmsLHe+rT2XWqopvL0PckkYqN7ksmm5pe3w=="
+      },
+      {
+        "path": "node_modules/dunder-proto",
+        "name": "dunder-proto",
+        "version": "1.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A=="
+      },
+      {
+        "path": "node_modules/entities",
+        "name": "entities",
+        "version": "7.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA=="
+      },
+      {
+        "path": "node_modules/es-define-property",
+        "name": "es-define-property",
+        "version": "1.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g=="
+      },
+      {
+        "path": "node_modules/es-errors",
+        "name": "es-errors",
+        "version": "1.3.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw=="
+      },
+      {
+        "path": "node_modules/es-object-atoms",
+        "name": "es-object-atoms",
+        "version": "1.1.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-HWcBoN6NileqtSydK2FqHbS/LoDd2pqrnQHLyJzBj4kOp/ky2MWMN694xOfkK8/SnUsW2DH7EfyVlydKCsm1Zw=="
+      },
+      {
+        "path": "node_modules/es-set-tostringtag",
+        "name": "es-set-tostringtag",
+        "version": "2.1.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA=="
+      },
+      {
+        "path": "node_modules/esbuild",
+        "name": "esbuild",
+        "version": "0.25.12",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-bbPBYYrtZbkt6Os6FiTLCTFxvq4tt3JKall1vRwshA3fdVztsLAatFaZobhkBC8/BrPetoa0oksYoKXoG4ryJg=="
+      },
+      {
+        "path": "node_modules/estree-walker",
+        "name": "estree-walker",
+        "version": "2.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w=="
+      },
+      {
+        "path": "node_modules/fdir",
+        "name": "fdir",
+        "version": "6.5.0",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg=="
+      },
+      {
+        "path": "node_modules/file-saver",
+        "name": "file-saver",
+        "version": "2.0.5",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA=="
+      },
+      {
+        "path": "node_modules/follow-redirects",
+        "name": "follow-redirects",
+        "version": "1.16.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw=="
+      },
+      {
+        "path": "node_modules/form-data",
+        "name": "form-data",
+        "version": "4.0.6",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-vKatAh4SlVfgbv+YtmhiRjhEMJsYpsG1Y2rMQtR+SVSbytsSD1YGzDIcrAJmdFec88u/+VoGmxnl+80gL1tRCQ=="
+      },
+      {
+        "path": "node_modules/fsevents",
+        "name": "fsevents",
+        "version": "2.3.3",
+        "dev": true,
+        "optional": true,
+        "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw=="
+      },
+      {
+        "path": "node_modules/function-bind",
+        "name": "function-bind",
+        "version": "1.1.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA=="
+      },
+      {
+        "path": "node_modules/get-intrinsic",
+        "name": "get-intrinsic",
+        "version": "1.3.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ=="
+      },
+      {
+        "path": "node_modules/get-proto",
+        "name": "get-proto",
+        "version": "1.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g=="
+      },
+      {
+        "path": "node_modules/gopd",
+        "name": "gopd",
+        "version": "1.2.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg=="
+      },
+      {
+        "path": "node_modules/has-symbols",
+        "name": "has-symbols",
+        "version": "1.1.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ=="
+      },
+      {
+        "path": "node_modules/has-tostringtag",
+        "name": "has-tostringtag",
+        "version": "1.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw=="
+      },
+      {
+        "path": "node_modules/hasown",
+        "name": "hasown",
+        "version": "2.0.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A=="
+      },
+      {
+        "path": "node_modules/https-proxy-agent",
+        "name": "https-proxy-agent",
+        "version": "5.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA=="
+      },
+      {
+        "path": "node_modules/immediate",
+        "name": "immediate",
+        "version": "3.0.6",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ=="
+      },
+      {
+        "path": "node_modules/inherits",
+        "name": "inherits",
+        "version": "2.0.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ=="
+      },
+      {
+        "path": "node_modules/is-plain-object",
+        "name": "is-plain-object",
+        "version": "3.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Xnpx182SBMrr/aBik8y+GuR4U1L9FqMSojwDQwPMmxyC6bvEqly9UBCxhauBF5vNh2gwWJNX6oDV7O+OM4z34g=="
+      },
+      {
+        "path": "node_modules/isarray",
+        "name": "isarray",
+        "version": "1.0.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ=="
+      },
+      {
+        "path": "node_modules/js-tokens",
+        "name": "js-tokens",
+        "version": "4.0.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ=="
+      },
+      {
+        "path": "node_modules/jszip",
+        "name": "jszip",
+        "version": "3.10.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-3l+rb15IOWtUhU0H5MFqES/T6Kh7abYwjosBey/vD6hDt8zoEffkSC5Ws5SGtgVw3gBx2NEbhTeSW1+kWkpyTQ=="
+      },
+      {
+        "path": "node_modules/lie",
+        "name": "lie",
+        "version": "3.3.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ=="
+      },
+      {
+        "path": "node_modules/lodash",
+        "name": "lodash",
+        "version": "4.18.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q=="
+      },
+      {
+        "path": "node_modules/lodash-es",
+        "name": "lodash-es",
+        "version": "4.18.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A=="
+      },
+      {
+        "path": "node_modules/loose-envify",
+        "name": "loose-envify",
+        "version": "1.4.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q=="
+      },
+      {
+        "path": "node_modules/magic-string",
+        "name": "magic-string",
+        "version": "0.30.21",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ=="
+      },
+      {
+        "path": "node_modules/marked",
+        "name": "marked",
+        "version": "15.0.12",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA=="
+      },
+      {
+        "path": "node_modules/math-intrinsics",
+        "name": "math-intrinsics",
+        "version": "1.1.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="
+      },
+      {
+        "path": "node_modules/mime-db",
+        "name": "mime-db",
+        "version": "1.52.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
+      },
+      {
+        "path": "node_modules/mime-types",
+        "name": "mime-types",
+        "version": "2.1.35",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw=="
+      },
+      {
+        "path": "node_modules/ms",
+        "name": "ms",
+        "version": "2.1.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
+      },
+      {
+        "path": "node_modules/nanoid",
+        "name": "nanoid",
+        "version": "3.3.18",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w=="
+      },
+      {
+        "path": "node_modules/nanopop",
+        "name": "nanopop",
+        "version": "2.4.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-NzOgmMQ+elxxHeIha+OG/Pv3Oc3p4RU2aBhwWwAqDpXrdTbtRylbRLQztLy8dMMwfl6pclznBdfUhccEn9ZIzw=="
+      },
+      {
+        "path": "node_modules/pako",
+        "name": "pako",
+        "version": "1.0.11",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="
+      },
+      {
+        "path": "node_modules/picocolors",
+        "name": "picocolors",
+        "version": "1.1.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
+      },
+      {
+        "path": "node_modules/picomatch",
+        "name": "picomatch",
+        "version": "4.0.7",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA=="
+      },
+      {
+        "path": "node_modules/postcss",
+        "name": "postcss",
+        "version": "8.5.28",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A=="
+      },
+      {
+        "path": "node_modules/process-nextick-args",
+        "name": "process-nextick-args",
+        "version": "2.0.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="
+      },
+      {
+        "path": "node_modules/proxy-from-env",
+        "name": "proxy-from-env",
+        "version": "2.1.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-cJ+oHTW1VAEa8cJslgmUZrc+sjRKgAKl3Zyse6+PV38hZe/V6Z14TbCuXcan9F9ghlz4QrFr2c92TNF82UkYHA=="
+      },
+      {
+        "path": "node_modules/readable-stream",
+        "name": "readable-stream",
+        "version": "2.3.8",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA=="
+      },
+      {
+        "path": "node_modules/resize-observer-polyfill",
+        "name": "resize-observer-polyfill",
+        "version": "1.5.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg=="
+      },
+      {
+        "path": "node_modules/rollup",
+        "name": "rollup",
+        "version": "4.63.1",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-3Df9jsstwhccuEfmAMi9l8XUh/GOkVObmFTU7CCVBysEbcOZLl84jCtaAZMcPiMz2EGKsATzQcU+Xr3n/wU6cg=="
+      },
+      {
+        "path": "node_modules/safe-buffer",
+        "name": "safe-buffer",
+        "version": "5.1.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g=="
+      },
+      {
+        "path": "node_modules/scroll-into-view-if-needed",
+        "name": "scroll-into-view-if-needed",
+        "version": "2.2.31",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-dGCXy99wZQivjmjIqihaBQNjryrz5rueJY7eHfTdyWEiR4ttYpsajb14rn9s5d4DY4EcY6+4+U/maARBXJedkA=="
+      },
+      {
+        "path": "node_modules/setimmediate",
+        "name": "setimmediate",
+        "version": "1.0.5",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA=="
+      },
+      {
+        "path": "node_modules/shallow-equal",
+        "name": "shallow-equal",
+        "version": "1.2.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-S4vJDjHHMBaiZuT9NPb616CSmLf618jawtv3sufLl6ivK8WocjAo58cXwbRV1cgqxH0Qbv+iUt6m05eqEa2IRA=="
+      },
+      {
+        "path": "node_modules/source-map-js",
+        "name": "source-map-js",
+        "version": "1.2.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA=="
+      },
+      {
+        "path": "node_modules/string_decoder",
+        "name": "string_decoder",
+        "version": "1.1.1",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg=="
+      },
+      {
+        "path": "node_modules/style-mod",
+        "name": "style-mod",
+        "version": "4.1.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-i/n8VsZydrugj3Iuzll8+x/00GH2vnYsk1eomD8QiRrSAeW6ItbCQDtfXCeJHd0iwiNagqjQkvpvREEPtW3IoQ=="
+      },
+      {
+        "path": "node_modules/stylis",
+        "name": "stylis",
+        "version": "4.4.0",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-5Z9ZpRzfuH6l/UAvCPAPUo3665Nk2wLaZU3x+TLHKVzIz33+sbJqbtrYoC3KD4/uVOr2Zp+L0LySezP9OHV9yA=="
+      },
+      {
+        "path": "node_modules/throttle-debounce",
+        "name": "throttle-debounce",
+        "version": "5.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-B71/4oyj61iNH0KeCamLuE2rmKuTO5byTOSVwECM5FA7TiAiAW+UqTKZ9ERueC4qvgSttUhdmq1mXC3kJqGX7A=="
+      },
+      {
+        "path": "node_modules/tinyglobby",
+        "name": "tinyglobby",
+        "version": "0.2.17",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g=="
+      },
+      {
+        "path": "node_modules/util-deprecate",
+        "name": "util-deprecate",
+        "version": "1.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="
+      },
+      {
+        "path": "node_modules/vite",
+        "name": "vite",
+        "version": "6.4.3",
+        "dev": true,
+        "optional": false,
+        "integrity": "sha512-NTKlcQjlAK7MlQoyb6LgaqHc8sso/pVyUJYWMws3jg21uTJw/LddqIFPcPqP6PzpgbIcZyKI85sFE4HBrQDA8A=="
+      },
+      {
+        "path": "node_modules/vue",
+        "name": "vue",
+        "version": "3.5.42",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-4RyHQTbQvOPs3MfvUO1Sg0YRrKNnA0mAVtvpd12Tg1fKDN7OHBUl1IqSn8zGJjK9nI3NkNp8cgTpVrSZC5TTcA=="
+      },
+      {
+        "path": "node_modules/vue-router",
+        "name": "vue-router",
+        "version": "4.6.4",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-Hz9q5sa33Yhduglwz6g9skT8OBPii+4bFn88w6J+J4MfEo4KRRpmiNG/hHHkdbRFlLBOqxN8y8gf2Fb0MTUgVg=="
+      },
+      {
+        "path": "node_modules/vue-types",
+        "name": "vue-types",
+        "version": "3.0.2",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-IwUC0Aq2zwaXqy74h4WCvFCUtoV0iSWr0snWnE9TnU18S66GAQyqQbRf2qfJtUuiFsBf6qp0MEwdonlwznlcrw=="
+      },
+      {
+        "path": "node_modules/w3c-keyname",
+        "name": "w3c-keyname",
+        "version": "2.2.8",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-dpojBhNsCNN7T82Tm7k26A6G9ML3NkhDsnw9n/eoxSRlVBB4CEtIQ/KTCLI2Fwf3ataSXRhYFkQi3SlnFwPvPQ=="
+      },
+      {
+        "path": "node_modules/warning",
+        "name": "warning",
+        "version": "4.0.3",
+        "dev": false,
+        "optional": false,
+        "integrity": "sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w=="
+      }
+    ]
+  },
+  "license_review": {
+    "pymupdf": "NOTICE.md 中已标注 PyMuPDF 的 AGPL/商业许可提醒；发布前仍需由权利人确认组合许可方案。",
+    "third_party": "第三方依赖的最终许可证清单未替代各包自身许可证文件；公开发布前应按实际安装版本复核。"
+  },
+  "updated_at": "2026-10-04",
+  "inventory_scope": "静态清单刷新；云端测试证据见 P12 验收报告，不代表已从锁文件全新安装"
+}

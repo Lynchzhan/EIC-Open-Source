@@ -1,0 +1,5 @@
+.env
+.env.*
+backups/
+restore-*/
+__pycache__/

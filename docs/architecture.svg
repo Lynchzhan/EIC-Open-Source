@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">EIC 企智枢系统架构图</title>
+  <desc id="desc">展示浏览器、API、领域服务、数据库、向量库和队列之间的关系。</desc>
+  <defs><style>
+    .bg{fill:#f6f8fb}.box{fill:#fff;stroke:#b7c5d8;stroke-width:2}.head{fill:#143b70}.headtext{fill:#fff;font:600 18px sans-serif}.text{fill:#1d2a3a;font:15px sans-serif}.small{fill:#4d5c6d;font:13px sans-serif}.arrow{stroke:#276ea6;stroke-width:3;fill:none;marker-end:url(#m)}
+  </style><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L9 3L0 6Z" fill="#276ea6"/></marker></defs>
+  <rect width="1200" height="680" class="bg"/>
+  <text x="60" y="55" class="text" style="font-size:28px;font-weight:700">EIC 企智枢 · 系统架构</text>
+  <rect x="60" y="105" width="250" height="150" rx="14" class="box"/><rect x="60" y="105" width="250" height="42" rx="14" class="head"/>
+  <text x="82" y="132" class="headtext">浏览器 / Vue 3</text><text x="82" y="177" class="text">路由与权限导航</text><text x="82" y="205" class="text">Axios / SSE</text><text x="82" y="233" class="text">安全 HTML 净化</text>
+  <rect x="390" y="105" width="250" height="150" rx="14" class="box"/><rect x="390" y="105" width="250" height="42" rx="14" class="head"/>
+  <text x="412" y="132" class="headtext">FastAPI API</text><text x="412" y="177" class="text">认证 / 租户 / RBAC</text><text x="412" y="205" class="text">聊天 / 知识库 / 上传</text><text x="412" y="233" class="text">健康检查 / 审计</text>
+  <rect x="720" y="105" width="250" height="150" rx="14" class="box"/><rect x="720" y="105" width="250" height="42" rx="14" class="head"/>
+  <text x="742" y="132" class="headtext">领域服务</text><text x="742" y="177" class="text">检索与文档分块</text><text x="742" y="205" class="text">AI Provider / Agent</text><text x="742" y="233" class="text">任务 / 租约 / Outbox</text>
+  <path d="M310 180H390M640 180H720" class="arrow"/>
+  <rect x="120" y="390" width="250" height="150" rx="14" class="box"/><rect x="120" y="390" width="250" height="42" rx="14" class="head"/>
+  <text x="142" y="417" class="headtext">业务数据库</text><text x="142" y="462" class="text">MySQL 8.4</text><text x="142" y="490" class="text">SQLite 模拟环境</text><text x="142" y="518" class="small">Alembic migrations</text>
+  <rect x="475" y="390" width="250" height="150" rx="14" class="box"/><rect x="475" y="390" width="250" height="42" rx="14" class="head"/>
+  <text x="497" y="417" class="headtext">向量与文件</text><text x="497" y="462" class="text">PostgreSQL / PGVector</text><text x="497" y="490" class="text">Qdrant 过渡读取</text><text x="497" y="518" class="small">上传持久卷</text>
+  <rect x="830" y="390" width="250" height="150" rx="14" class="box"/><rect x="830" y="390" width="250" height="42" rx="14" class="head"/>
+  <text x="852" y="417" class="headtext">异步执行</text><text x="852" y="462" class="text">Redis 7</text><text x="852" y="490" class="text">ARQ Worker</text><text x="852" y="518" class="small">任务与索引队列</text>
+  <path d="M515 255V330H245V390M820 255V330H600V390M870 255V330H955V390" class="arrow"/>
+  <text x="60" y="625" class="small">生产部署：Nginx → Frontend / Backend；迁移由独立 migrate 服务显式执行。</text>
+</svg>
